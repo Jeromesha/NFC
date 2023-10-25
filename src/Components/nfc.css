@@ -1,0 +1,443 @@
+html {
+  scroll-behavior: smooth;
+}
+main {
+  width: 100%;
+}
+/* login css */
+.loginPage_nfc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../Assert/LoginTemp.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.Form_A {
+  background-color: rgba(0, 0, 0, 0.473);
+  border-radius: 5%;
+  padding: 4%;
+  margin-bottom: 2%;
+}
+.form_B {
+    width: 100%;
+    background-color: #fff42c;
+    font-size: small;
+    border-radius: 10px;
+    padding: 2%;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.form_outline {
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 5%; */
+}
+.button_form {
+  font-size: 16px;
+  padding: 5%;
+  border: 0px;
+  /* border-radius: 6px; */
+  background-color: #fff42c;
+  font-size: large;
+  font-weight: 500;
+  width: 50%;
+  /* padding: 5px; */
+}
+.button_form:focus {
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+}
+.form-outline {
+  padding: 2%;
+}
+.form_Log_iv {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5%;
+}
+.btn-submit-form {
+  padding: 2%;
+  background-color: aqua;
+}
+.formP_label {
+  margin-bottom: 3%;
+  color: #fff;
+}
+.form_login_style {
+    width: 100%;
+    background-color: #fff42c;
+    font-size: small;
+    border-radius: 10px;
+    padding: 3%;
+    font-weight: 500;
+    font-size: large;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.form_error{
+  color: red;
+}
+/* home page */
+.imgnfcgif {
+    width: 500px;
+    height: 500px;
+}
+.navigationBar{
+    position: sticky;
+    top: 0;
+    color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.082), 0 6px 20px 0 rgba(75, 73, 73, 0);
+    background-color: #0000009c;
+}
+.navbar-brand {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 48px;
+  height: 48px;
+}
+.navbar-nav .nav-item:hover {
+  background-color: rgba(180, 190, 203, 0.4);
+}
+.navContext{
+    padding: 1%;
+    text-decoration: wavy;
+    color: #fff;
+}
+.navbarLogo {
+    color: #fff;
+}
+.navcontainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+/* first content home page */
+
+.contecbotton {
+    padding: 15px;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    border-radius: 35px;
+    border-width: 0px;
+    background-color: black;
+    color: white;
+    font-size: large;
+}
+.contecbotton:hover {
+    transition: 3ms;
+    flex-grow: 3;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.466), 0 6px 20px 0 rgba(0, 0, 0, 0.452);
+}
+
+/* // home page card feature css */
+.card_Feature {
+    position: relative;
+    max-width : 270px;
+    height : 215px;  
+    background-color : #fff;
+    margin : 30px 10px;
+    padding : 20px 15px;
+    
+    display : flex;
+    flex-direction : column;
+    box-shadow : 0 5px 20px rgba(0,0,0,0.5);
+    transition : 0.3s ease-in-out;
+    border-radius : 15px;
+  }
+  .card_Feature:hover {
+    height : 320px;    
+  }
+  .card_Feature .image_Feature {
+    position : relative;
+    width : 220px;
+    height : 220px;
+    
+    top : -40%;
+    left: 8px;
+    box-shadow : 0 5px 20px rgba(0,0,0,0.2);
+    z-index : 1;
+  }
+  
+  .card_Feature .image_Feature img {
+    max-width : 100%;
+    border-radius : 15px;
+  }
+  
+  .card_Feature .content {
+    position : relative;
+    top : -140px;
+    padding : 10px 15px;
+    color : #111;
+    text-align : center;
+    
+    visibility : hidden;
+    opacity : 0;
+    transition : 0.3s ease-in-out;
+      
+  }
+  .card_Feature:hover .content {
+     margin-top : 30px;
+     visibility : visible;
+     opacity : 1;
+     transition-delay: 0.2s; 
+  }
+
+  .feat_cards {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4%;
+  }
+
+  /* plan ---- */
+  .plan_main_div {
+    background-color: #001133;
+    color: white;
+    border-radius: 10px;
+    padding: 3%;
+  }
+  .plan_head {
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 4%;
+    border-radius: 10px;
+  }
+  .plan_row {
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+  }
+  .plan_rs_button {
+    font-size: 3rem;
+    border-radius: 50px;
+    background-color: rgb(0 17 51);
+    color: white;
+    width: 100%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  }
+  .plan_Img {
+    padding: 0px; 
+    background-color: white;
+     color: black;
+  }
+  .plan_card_head{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .plan_crt {
+    color: green;
+  }
+
+
+        /* contact us */
+
+  .contact_us_head {
+    text-align: center;
+    padding: 1%;
+    margin-top: 2%; 
+  }
+  .conta_us_left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3%;
+  }
+  .conta_us_form {
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    background-color: grey;
+    border-radius: 20px;
+  }
+
+/* /////////////////////////////////////////////---------dashboard----////////////////////////////////////////////////////////////// */
+.sidebar_container{
+  display:flex;
+  background-color: #f8f9fa;
+  
+}
+.sidebar_div{
+  background: #0c0c0c00;
+  color: #0a0a0a;
+  height: 100vh;
+  width: 200px;
+  transition: all 0.5s;
+  /* position: fixed; */
+}
+.top_section{
+  display: flex;
+  align-items:center;
+  padding:20px 15px;
+}
+.sidebar_logo{
+  font-size: 30px;
+}
+.sidebar_bars{
+  display: flex;
+  font-size: 25px;
+  margin-left: 50px;
+}
+.sidebar_link{
+  display: flex;
+  color: #000000;
+  padding: 10px 15px;
+  gap: 15px;
+  transition: all 0.5s;
+}
+.sidebar_link:hover{
+  background:lightskyblue;
+  color: #344767;
+  transition: all 0.5s;
+}
+.sidebar_active{
+  background: lightskyblue;
+  color: #344767;
+}
+.sidebar_icon{
+  padding: 6%;
+  background-image: linear-gradient(to bottom right, rgb(33 208 253), rgb(33 87 255));
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.164);
+  border-radius: 10px;
+  /* background-color: #fff; */
+}
+.sidebar_link_text{
+  font-size: 16px;
+  margin-block: auto;
+}
+.sidebar_link_Clicked {
+  background-color: #000000;
+  color: #fff;
+}
+.Header_Dash {
+  background-color: transparent;
+  position: fixed;
+  display: contents;
+}
+.head_container {
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 35px;
+  box-shadow: 0 20px 27px 0 rgba(0,0,0,.05);
+}
+.head_navLink {
+  color: #000000;
+  font-weight: 500;
+}
+.card_icon_head {
+  color: rgb(20, 1, 1);
+}
+.card_icon {
+  background-color:rgb(255, 255, 255); 
+  padding: 5%; 
+  background-image: linear-gradient(to bottom right, rgb(33 208 253), rgb(33 87 255));
+  border-radius:15px; 
+  color: #fff;
+  
+}
+.card_dash {
+  border-radius: 25px;
+  border: 0px;
+  box-shadow: 0 20px 27px 0 rgba(0,0,0,.05);
+}
+.card_dash:hover {
+  transition: 3ms;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.164);
+}
+.dash_Table_div {
+  padding-left: 6%;
+  padding-right: 6%;
+  
+}
+.dash_Table{
+  background-color: #fff;
+  border: none;
+  border-radius: 23px;
+  box-shadow: 0 20px 27px 0 rgba(0,0,0,.05);
+  padding-bottom: 4%;
+}
+.dash_table_border {
+  border-radius: 0px;
+}
+
+.vcard_dash_nav {
+  padding-left: 2%;
+  padding-right: 2%;
+  color: rgb(58, 58, 58);
+  font-weight: 400;
+  margin: 1%;
+  font-size: larger;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  
+  position:relative;
+  cursor:pointer;
+  transform: translateZ(0);
+}
+.vcard_dash_nav:before{
+  content:"";
+  position:absolute;  z-index:-1;
+  top:0; left:0; right:0; bottom: 0; /*This will fill up the entire block.*/
+  background:#2098d1; color:white; 
+  transform: scaleY(0);
+  transform-origin: 50% 100%;
+  transition: transform 0.5s ease-out;
+}
+.vcard_dash_nav:hover{  color:rgb(255, 255, 255);  }
+.vcard_dash_nav:hover:before {
+  transform: scaleY(1);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66); /*creates bounce*/
+}
+
+.vcard_dash_div {
+  padding: 1%;
+  margin: 2%;
+}
+
+.Hotel_container {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 27px 0 rgba(0,0,0,.05);
+}
+/* /////////////////=================vcardDetial-------------- */
+.vcardDetial_div_input {
+  display: flex;
+  flex-direction: column;
+  padding: 4%;
+  /* align-items: flex-start; */
+}
+.Hotel_head {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-bottom: 2px solid rgb(126, 124, 124);
+}
+.vcard_detial_btton_submit {
+  margin:2%;
+  border:0px; 
+  border-radius:15px;
+  padding:1%;
+  background-image:linear-gradient(to bottom right, rgb(33 208 253), rgb(33 87 255));
+}
+.vcard_detial_btton_discard {
+  margin:2%;
+  border:0px; 
+  border-radius:15px;
+  padding:1%;
+  background-image:linear-gradient(to bottom right, rgb(61, 214, 252), rgba(20, 20, 20, 0.329));
+}
+/* ////////////////////////////////////////////////// */
+
+/* 
+=============================trail */
+
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
