@@ -367,8 +367,8 @@ main {
 }
 
 .vcard_dash_nav {
-  padding-left: 2%;
-  padding-right: 2%;
+  padding-left: 1%;
+  padding-right: 1%;
   color: rgb(58, 58, 58);
   font-weight: 400;
   margin: 1%;
@@ -385,7 +385,7 @@ main {
   content:"";
   position:absolute;  z-index:-1;
   top:0; left:0; right:0; bottom: 0; /*This will fill up the entire block.*/
-  background:#2098d1; color:white; 
+  background:#043464; color:white; 
   transform: scaleY(0);
   transform-origin: 50% 100%;
   transition: transform 0.5s ease-out;
@@ -417,6 +417,9 @@ main {
   padding-top: 2%;
   padding-bottom: 2%;
   border-bottom: 2px solid rgb(126, 124, 124);
+
+  width: 100% ;
+  overflow: hidden ;
 }
 .vcard_detial_btton_submit {
   margin:2%;

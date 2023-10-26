@@ -52,6 +52,8 @@ export default function QrCode() {
                     />
                 )}
             </center>
+
+            
         </div>
     );
 }
