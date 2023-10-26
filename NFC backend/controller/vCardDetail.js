@@ -3,26 +3,28 @@ import VCardDetailDB from "../model/vCardDetailModel.js";
 export async function createVCardDetail(req, res, next) {
     try {
         const data = req.body;
+        console.log(req, "data")
         const details = {
-            vCardForm: {
-                vCardName: data.vCardName,
-                occupation: data.occupation,
-                description: data.description,
-            },
-            vCardDetails: {
-                firstName: data.firstName,
-                lastName: data.lastName,
-                email: data.email,
-                phone: data.phone,
-                alternateEmail: data.alternateEmail,
-                location: data.location,
-                locationURL: data.locationURL,
-                dob: data.dob,
-                company: data.company,
-                defaultLanguage: data.defaultLanguage
-            }
+            // vCardForm: {
+            vCardName: data.vCardName,
+            occupation: data.occupation,
+            description: data.description,
+            // },
+            // vCardDetails: {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            phone: data.phone,
+            alternateEmail: data.alternateEmail,
+            location: data.location,
+            locationURL: data.locationURL,
+            dob: data.dob,
+            company: data.company,
+            defaultLanguage: data.defaultLanguage
+            // }
         };
         const createVCardDetail = await VCardDetailDB.create(details);
+        console.log(createVCardDetail, 'sdf')
         res.status(201).json({
             message: "Created Successfully",
             data: createVCardDetail,
