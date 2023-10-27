@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Col, Row } from "react-bootstrap";
 
 export default function BusinessHours() {
   const Value = {
     Time: [
       "12 AM",
-      "1 AM",
+      "2 AM",
       "2 AM",
       "3 AM",
       "4 AM",
@@ -17,7 +17,7 @@ export default function BusinessHours() {
       "10 AM",
       "11 AM",
       "12 PM",
-      "1 PM",
+      "2 PM",
       "2 PM",
       "3 PM",
       "4 PM",
@@ -31,69 +31,158 @@ export default function BusinessHours() {
     ],
   };
 
-  // State to store selected values for each day
-  const [selectedHours, setSelectedHours] = useState({});
-
-  // Handle checkbox change for a specific day
-  const handleCheckboxChange = (day) => (e) => {
-    setSelectedHours({
-      ...selectedHours,
-      [day]: e.target.checked ? [...Value.Time] : [],
-    });
-  };
-
-  // Handle select change for a specific day
-  const handleSelectChange = (day) => (e) => {
-    setSelectedHours({
-      ...selectedHours,
-      [day]: Array.from(e.target.selectedOptions, (option) => option.value),
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Selected Hours:", selectedHours);
-  };
-
   return (
-    <div style={{ padding: "5%" }}>
-      <form onSubmit={handleSubmit}>
-        <Row>
-          {Object.keys(Value).map((day, index) => (
-            <div key={index}>
-              <Col lg={2}>
-                <input
-                  type="checkbox"
-                  onChange={handleCheckboxChange(day)}
-                ></input>{" "}
-                &nbsp;
-                <label style={{ padding: "2%" }}>{day}</label>
-              </Col>
-              <Col lg={1}>
-                <select
-                  multiple
-                  onChange={handleSelectChange(day)}
-                  value={selectedHours[day] || []}
-                >
-                  {Value.Time.map((hour, index) => (
-                    <option key={index} value={hour}>
-                      {hour}
-                    </option>
-                  ))}
-                </select>
-              </Col>
-            </div>
+    <div style={{padding:"3%"}}>
+        <form>
+      <Row>
+        <Col lg={2}>
+        <input type="checkbox" ></input> &nbsp;
+        <label style={{padding:"3%"}}>Monday</label>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
           ))}
-        </Row>
-        <div style={{ marginLeft: "4%" }}>
-          <button type="submit" className="vcard_detial_btton_submit">
-            Submit
-          </button>
-          <button type="reset" className="vcard_detial_btton_discard">
-            Discard
-          </button>
-        </div>
-      </form>
+        </select>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={2}>
+        <input type="checkbox" ></input> &nbsp;
+        <label style={{padding:"3%"}}>Tuesday</label>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={2}>
+        <input type="checkbox" ></input> &nbsp;
+        <label style={{padding:"3%"}}>Wednesday</label>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={2}>
+        <input type="checkbox" ></input> &nbsp;
+        <label style={{padding:"3%"}}>Thrusday</label>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={2}>
+        <input type="checkbox" ></input> &nbsp;
+        <label style={{padding:"3%"}}>Friday</label>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={2}>
+        <input type="checkbox" ></input> &nbsp;
+        <label style={{padding:"3%"}}>Saturday</label>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+      </Row>
+       <Row>
+        <Col lg={2}>
+        <input type="checkbox" ></input> &nbsp;
+        <label style={{padding:"3%"}}>Sunday</label>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+        <Col lg={2}>
+        <select>
+          {Value.Time.map((hour, index) => (
+            <option key={index}>{hour}</option>
+          ))}
+        </select>
+        </Col>
+      </Row>
+      <div style={{ marginLeft: "4%" }}>
+            <button type="submit" className="vcard_detial_btton_submit">
+              Submit
+            </button>
+            <button type="submit" className="vcard_detial_btton_discard">
+              Discard
+            </button>
+          </div>
+          </form>
     </div>
   );
 }

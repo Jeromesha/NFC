@@ -295,11 +295,11 @@
     color: rgb(225, 225, 225) !important;
   }
   .ant-menu-sub.ant-menu-inline {
-    background-color: #043464 !important;
+    background-color: #04364A !important;
   }
   
   .dashboards__headerNavs {
-    background-color: #043464;
+    background-color: #04364A;
     /* background-image: linear-gradient(to right, #ff9100e3, #ff6501 ); */
     height: 70px;
     left: 0;
@@ -607,7 +607,7 @@
   background-color: rgba(20, 50, 100, 100);
 }
 .ant-menu-inline {
-  background-color: #043464!important;
+  background-color: #04364A!important;
 }
 .ant-menu-title-content {
   padding: 16px 7px 16px 0px !important;

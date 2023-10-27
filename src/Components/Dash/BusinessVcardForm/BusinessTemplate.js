@@ -1,95 +1,89 @@
-import { Space, Table, Tag } from 'antd';
+import { Space, Switch, Table, Tag, Tooltip } from 'antd';
 import React, { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
+import { AiOutlineDownload, AiOutlineQrcode } from "react-icons/ai";
+import { HiOutlineDocumentText } from "react-icons/hi";
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 export default function BusinessTemplate() {
     const [hotelSet, setHotelSet] = useState('cardDetial');
 
     const columns = [
-        {
-          title: 'Name',
-          dataIndex: 'name',
-          key: 'name',
-          render: (text) => <a>{text}</a>,
-        },
-        {
-          title: 'Age',
-          dataIndex: 'age',
-          key: 'age',
-        },
-        {
-          title: 'Address',
-          dataIndex: 'address',
-          key: 'address',
-        },
-        {
-          title: 'Tags',
-          key: 'tags',
-          dataIndex: 'tags',
-          render: (_, { tags }) => (
-            <>
-              {tags.map((tag) => {
-                let color = tag.length > 5 ? 'geekblue' : 'green';
-                if (tag === 'loser') {
-                  color = 'volcano';
-                }
-                return (
-                  <Tag color={color} key={tag}>
-                    {tag.toUpperCase()}
-                  </Tag>
-                );
-              })}
-            </>
-          ),
-        },
-        {
-          title: 'Action',
-          key: 'action',
-          render: (_, record) => (
-            <Space size="middle">
-              <a>Invite {record.name}</a>
-              <a>Delete</a>
-            </Space>
-          ),
-        },
-      ];
-      const data = [
-        {
-          key: '1',
-          name: 'John Brown',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
-        },
-        {
-          key: '2',
-          name: 'Jim Green',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sydney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
-        },
-      ];
+      {
+        title: "VCARD NAME",
+        dataIndex: "vcardname",
+        key: "vcardname",
+      },
+      {
+        title: "PREVIEW URL",
+        dataIndex: "preview",
+        key: "preview",
+      },
+      {
+        title: "STATUS",
+        dataIndex: "status",
+        key: "status",
+        render: (text, record) => (
+          <Space size="middle">
+            <Switch defaultChecked={text} onChange={onchange} />
+          </Space>
+        ),
+      },
+      {
+        title: "CREATED AT",
+        dataIndex: "createdate",
+        key: "createdate",
+      },
+      {
+        title: "ACTION",
+        dataIndex: "action",
+        key: "action",
+        render: (text, record) => (
+          <Space size="middle">
+            <Tooltip title="Downlaod QR"><AiOutlineQrcode/></Tooltip>
+            <Tooltip title="Downlaod Card"><AiOutlineDownload/></Tooltip>
+            <Tooltip title="Enquiries"><HiOutlineDocumentText/></Tooltip>
+            <Tooltip title="Edit"><EditOutlined/></Tooltip>
+            <Tooltip title="Delete"><DeleteOutlined style={{color:"red"}}/></Tooltip>
+          </Space>
+        ),
+      },
+    ];
+    
+    const data = [
+      {
+        key: '1',
+        vcardname: 'hello',
+        preview: 'created Url',
+        status: true, // true for "on" and false for "off"
+        createdate: '12-1-3223',
+        action: '',
+      },
+      {
+        key: '1',
+        vcardname: 'hello',
+        preview: 'created Url',
+        status: true, // true for "on" and false for "off"
+        createdate: '12-1-3223',
+        action: '',
+      },
+    ];
 
       const navigate = useNavigate();
-
       const handleNavigate =() => {
         navigate("/businessform")
       }
     return (
       <div>
         <div style={{padding:"2%"}}>
-        <button style={{display:"flex", justifyContent:"end"}} onClick={handleNavigate}>
+        <button 
+        className='btn_dash_level'
+         onClick={handleNavigate}
+         >
             NewCard
         </button>
         </div>
-        <div>
+        <div style={{paddingLeft:"2%"}}>
             <Table columns={columns} dataSource={data} />
         </div>
       </div>

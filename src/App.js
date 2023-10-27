@@ -7,7 +7,6 @@ import Form_LR from "./Components/Form_LR";
 import SideBar from "./Components/Dash/SideBar";
 import DashRoutes from "./Components/Dash/DashRoutes";
 
- 
 import Layout from "./Components/Layout/Index";
 function App() {
   return (

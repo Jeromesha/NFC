@@ -509,7 +509,7 @@ main {
   font-weight: 500;
 }
 .card_icon_head {
-  color: rgb(20, 1, 1);
+  color: rgb(247, 247, 247);
 }
 .card_icon {
   background-color: rgb(255, 255, 255);
@@ -546,9 +546,19 @@ main {
   border-radius: 0px;
 }
 
-.vcard_dash_nav {
-  padding-left: 2%;
-  padding-right: 2%;
+.Hotel_head {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-bottom: 2px solid rgb(126, 124, 124);
+  position: relative;
+ 
+}
+.sliding-list {
+		
+    }
+/* .vcard_dash_nav {
+  padding-left: 1%;
+  padding-right: 1%;
   color: rgb(58, 58, 58);
   font-weight: 400;
   margin: 1%;
@@ -556,38 +566,32 @@ main {
   position: relative;
   display: inline-block;
   text-decoration: none;
-
-  position: relative;
-  cursor: pointer;
-  transform: translateZ(0);
-}
-.vcard_dash_nav:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; /*This will fill up the entire block.*/
-  background: #2098d1;
-  color: white;
-  transform: scaleY(0);
-  transform-origin: 50% 100%;
-  transition: transform 0.5s ease-out;
-}
-.vcard_dash_nav:hover {
-  color: rgb(255, 255, 255);
-}
-.vcard_dash_nav:hover:before {
-  transform: scaleY(1);
-  transition-timing-function: cubic-bezier(
-    0.52,
-    1.64,
-    0.37,
-    0.66
-  ); /*creates bounce*/
-}
-
+  } */
+  .vcard_dash_nav {
+    color: #000000;
+    display: inline-block;
+    text-decoration: none;
+    padding: 15px 20px;
+    position: relative;
+  }
+ .vcard_dash_nav:after{    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    color: #000000;
+    background: #000000;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+ .vcard_dash_nav:hover:after{ 
+    width: 100%; 
+    color: #000000;
+    left: 0; 
+  }
 .vcard_dash_div {
   padding: 1%;
   margin: 2%;
@@ -605,11 +609,7 @@ main {
   padding: 4%;
   /* align-items: flex-start; */
 }
-.Hotel_head {
-  padding-top: 2%;
-  padding-bottom: 2%;
-  border-bottom: 2px solid rgb(126, 124, 124);
-}
+
 .vcard_detial_btton_submit {
   margin: 2%;
   border: 0px;
@@ -636,8 +636,28 @@ main {
 
 /* 
 =============================trail */
-
+.btn_dash_level {
+  display: flex;
+  justify-content: end;
+  padding: 1%;
+  border: 0px;
+  border-radius: 10px;
+  background-color: #64CCC5;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.466), 0 6px 20px 0 rgba(0, 0, 0, 0.452);
+}
 .row {
   margin-right: 0px;
   margin-left: 0px;
+}
+.vcard_detial_input {
+  padding: 3px;
+  border-radius: 2px;
+  /* box-shadow: 0 10px 17px 0 rgba(51, 51, 51, 0.075); */
+  border-inline-width: 1px;
+  border-block-width: 1px;
+  /* background-color: #fafafafd; */
+}
+.vcard_detial_label {
+  font-size: large;
 }

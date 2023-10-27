@@ -3,6 +3,7 @@ import "../Components/nfc.css";
 import { Row, Col } from "react-bootstrap";
 import {Input} from "antd"
 import { useForm } from "react-hook-form";
+import { type } from "@testing-library/user-event/dist/type";
 import { useNavigate } from "react-router-dom";
 
 export default function Form_LR() {
@@ -14,12 +15,25 @@ export default function Form_LR() {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    alert(JSON.stringify(data));
   };
 
   let navigate = useNavigate();
   const routeChange = () => {
     let path = `/dashroute`;
     navigate(path);
+  };
+
+  const onSubmite = (data) => {
+    const { password, passwordrepeat } = data;
+    
+    // Add custom password validation logic here
+    if (password !== passwordrepeat) {
+      alert("Passwords do not match");
+    } else {
+      alert("Registration successful");
+      // You can submit the form data to your API or take other actions here
+    }
   };
 
   const Login = () => {
