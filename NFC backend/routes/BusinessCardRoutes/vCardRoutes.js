@@ -1,13 +1,13 @@
 import { Router } from "express";
-const router = Router();
-
-//Gender
 import {
     createVCardDetail,
     getVCardDetail,
     updateVCardDetail,
     deleteVCardDetail,
 } from "../../controller/vCardDetail.js";
+
+
+const router = Router();
 
 router.route("/createVCardDetail").post(createVCardDetail);
 router.route("/getVCardDetail").get(getVCardDetail);

@@ -1,6 +1,7 @@
 import VCardDetailDB from "../model/vCardDetailModel.js";
 
 export async function createVCardDetail(req, res, next) {
+    console.log("hi");
     try {
         const data = req.body;
         console.log(req, "data")
