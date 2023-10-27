@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../Components/nfc.css";
 import { Row, Col } from "react-bootstrap";
+import {Input} from "antd"
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
