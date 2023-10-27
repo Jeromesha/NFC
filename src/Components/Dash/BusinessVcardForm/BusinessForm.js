@@ -16,6 +16,7 @@ export default function BusinessForm() {
   return (
     <div className="Hotel_container">
       <section className="Hotel_head">
+        <div class="sliding-list list01">
           <NavLink
             className="vcard_dash_nav"
             onClick={() => setHotelSet("cardDetial")}
@@ -64,8 +65,9 @@ export default function BusinessForm() {
           >
             SocialMedia
           </NavLink>
+          </div>
       </section>
-      <div>
+      <div style={{padding:"4%"}}>
         {hotelSet === "cardDetial" && <VcardDetial />}
         {hotelSet === "qr" && <QrCode />}
         {hotelSet === "socialmedia" && <SocialMediaLinks />}

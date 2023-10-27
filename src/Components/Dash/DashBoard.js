@@ -1,46 +1,64 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
-import { Card, Col, Row, Table } from "react-bootstrap";
-import { AiOutlineUser } from "react-icons/ai";
+import { Card, Col, Row } from "react-bootstrap";
+import { AiOutlineDownload, AiOutlineQrcode, AiOutlineUser } from "react-icons/ai";
+import { HiOutlineDocumentText } from "react-icons/hi";
 import { LiaUserAltSlashSolid } from "react-icons/lia";
 import { FaQuestion } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
-import { Bar } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
-import {CategoryScale} from 'chart.js'; 
+import { Bar } from "react-chartjs-2";
+import Chart from "chart.js/auto";
+import { CategoryScale } from "chart.js";
+import { Table, Switch, Space, Tooltip } from 'antd';
+import { EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+
 Chart.register(CategoryScale);
 
+// chart data
 const barData = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Augest', 'September', 'October', 'November', 'December'],
+  labels: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Augest",
+    "September",
+    "October",
+    "November",
+    "December",
+  ],
   datasets: [
-      {
-          label: 'Entries',
-          backgroundColor: 'rgba(255,99,132,0.2)',
-          borderColor: 'rgba(255,99,132,1)',
-          borderWidth: 1,
-          hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-          hoverBorderColor: 'rgba(255,99,132,1)',
-          data: [65, 59, 80, 81, 56, 55, 40]
-      }
-  ]
+    {
+      label: "Entries",
+      backgroundColor: "rgba(255,99,132,0.2)",
+      borderColor: "rgba(255,99,132,1)",
+      borderWidth: 1,
+      hoverBackgroundColor: "rgba(255,99,132,0.4)",
+      hoverBorderColor: "rgba(255,99,132,1)",
+      data: [65, 59, 80, 81, 56, 55, 40],
+    },
+  ],
 };
 
 const options = {
   scales: {
-      x: {
-          type: 'category',
-          title: {
-              display: true,
-              text: 'Months',
-          },
+    x: {
+      type: "category",
+      title: {
+        display: true,
+        text: "Months",
       },
-      y: {
-          beginAtZero: true,
-          title: {
-              display: true,
-              text: 'Data',
-          },
+    },
+    y: {
+      beginAtZero: true,
+      title: {
+        display: true,
+        text: "Data",
       },
+    },
   },
 };
 const CardVal = [
@@ -66,26 +84,57 @@ const CardVal = [
   },
 ];
 
+// table data
+
+const columns = [
+  {
+    title: "VCARD NAME",
+    dataIndex: "vcardname",
+    key: "vcardname",
+  },
+  {
+    title: "NAME",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "PHONE",
+    dataIndex: "phone",
+    key: "phone",
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+    key: "email",
+  },
+];
+
+const data = [
+  {
+    key: '1',
+    vcardname: 'YYYYY',
+    name: 'XXXX',
+    phone: 1234567890, // true for "on" and false for "off"
+    email: 'abc@gmal.com',
+    action: '',
+  },
+];
+
 export default function DashBoard() {
-  const chartRef = useRef(null); // Reference to the chart instance
+  const chartRef = useRef(null);
   const [chart, setChart] = useState(null);
 
   useEffect(() => {
-      if (chartRef.current) {
-          if (chart) {
-              // Destroy the existing chart if it exists
-              chart.destroy();
-          }
-
-          // Create a new chart
-          const newChart = new Bar(chartRef.current, {
-              data: barData,
-              options: options,
-          });
-
-          // Set the chart in the state
-          setChart(newChart);
+    if (chartRef.current) {
+      if (chart) {
+        chart.destroy();
       }
+      const newChart = new Bar(chartRef.current, {
+        data: barData,
+        options: options,
+      });
+      setChart(newChart);
+    }
   }, []);
   return (
     <div
@@ -110,7 +159,7 @@ export default function DashBoard() {
                 }}
               >
                 <div className="card_icon">{card.icon}</div>
-                <div style={{}}>
+                <div style={{ color: "white" }}>
                   <Card.Text>{card.title}</Card.Text>
                   <Card.Text style={{ fontSize: "2rem", textAlign: "center" }}>
                     {card.active}
@@ -121,35 +170,14 @@ export default function DashBoard() {
           </Col>
         ))}
       </Row>
-      <div >
-        <Bar data={barData} options={options} style={{padding:"5%"}}/>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Bar data={barData} options={options} style={{ padding: "5%" }} />
       </div>
       <div className="dash_Table_div">
-        <h5 style={{paddingBottom:"3%"}}>Today Appointments</h5>
-        <Table
-          className="dash_Table"
-        >
-          <div style={{boxShadow: "0 20px 27px 0 rgba(0,0,0,.05)"}}>
-          <thead style={{ border: "none", borderRadius: "23px"}}>
-            <tr style={{ border: "none", borderRadius: "23px" }}>
-              <th style={{ border: "none", borderRadius: "23px" }}>
-                Vcard Name
-              </th>
-              <th style={{ border: "none" }}>Name</th>
-              <th style={{ border: "none" }}>Phone</th>
-              <th style={{ border: "none", borderRadius: "23px" }}>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ border: "none", borderRadius: "23px" }}>
-              <td style={{ border: "none", borderRadius: "23px" }}>1</td>
-              <td style={{ border: "none", borderRadius: "23px" }}>Mark</td>
-              <td style={{ border: "none", borderRadius: "23px" }}>Otto</td>
-              <td style={{ border: "none", borderRadius: "23px" }}>@mdo</td>
-            </tr>
-          </tbody>
-          </div>
-        </Table>
+        <h5 style={{ paddingBottom: "3%" }}>Today Appointments</h5>
+        <div style={{ overflowX: "auto",boxShadow: " 0 4px 8px 0 rgba(0, 0, 0, 0.082), 0 6px 20px 0 rgba(75, 73, 73, 0)" }}>
+          <Table columns={columns} dataSource={data}/>
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,6 @@ import Form_LR from "./Components/Form_LR";
 import SideBar from "./Components/Dash/SideBar";
 import DashRoutes from "./Components/Dash/DashRoutes";
 
- 
 import Layout from "./Components/Layout/Index";
 function App() {
   return (
@@ -18,7 +17,7 @@ function App() {
           <Route key={index} path={path} element={Ele} />
         ))}
       </Routes> */}
-            {/* <SideBar>
+      {/* <SideBar>
             <Routes>
               <Route path="/dash" element={<DashBoard />} />
               <Route path="/enquiries" element={<Enquiries />} />
@@ -32,7 +31,7 @@ function App() {
           ))}
         </Route>
       </Routes> */}
-            <Routes>
+      <Routes>
         <Route path="/" element={<Layout />}>
           {DashRoutes.map(({ path, element: Ele }, index) => (
             <Route key={index} path={path} element={Ele} />

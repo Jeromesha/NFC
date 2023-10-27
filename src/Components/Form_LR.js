@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Components/nfc.css";
 import { Row, Col } from "react-bootstrap";
-import { appendErrors, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { type } from "@testing-library/user-event/dist/type";
 import { useNavigate } from "react-router-dom";
 
@@ -14,68 +14,93 @@ export default function Form_LR() {
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
+    alert(JSON.stringify(data));
   };
   
   let navigate = useNavigate(); 
+
   const routeChange = () =>{ 
     let path = `/dashroute`; 
     navigate(path);
   }
 
+  const onSubmite = (data) => {
+    const { password, passwordrepeat } = data;
+    
+    // Add custom password validation logic here
+    if (password !== passwordrepeat) {
+      alert("Passwords do not match");
+    } else {
+      alert("Registration successful");
+      // You can submit the form data to your API or take other actions here
+    }
+  };
+
   const Login = () => {
     return (
       <Row>
         <Col sm={12} mg={12} lg={12} xl={12}>
-          <form onSubmit={handleSubmit(onSubmit)} class="form_outline">
-            <label className="formP_label" for="registerName">
-              UserName
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              {...register("UserName", {
-                required: true,
-                maxLength: 20,
-              })}
-            />
-            {errors?.UserName?.type === "required" && (
-              <p className="form_error">Username Required</p>
-            )}
-            <label className="formP_label" for="registerName">
-              Password
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              {...register("Password", {
-                pattern: /^[A-Za-z]+$/i,
-                required: true,
-                maxLength: 20,
-              })}
-            />
-            {errors?.Password?.type === "required" && (
-              <p className="form_error">Password Requires</p>
-            )}
-            {errors?.Password?.type === "MaxLength" && (
-              <p>Max length is 20 charecter</p>
-            )}
-            <div
-              style={{ display: "flex", justifyContent: "start", margin: "3%" }}
-            >
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="exampleCheck1"
-              />{" "}
-              &nbsp;
-              <label class="formP_label" for="exampleCheck1">
-                Check me out
-              </label>
-            </div>
-            <button type="submit" className="form_login_style" onClick={routeChange}>
-              Submit
-            </button>
-          </form>
+        <form onSubmit={handleSubmit(onSubmit)} className="form_outline">
+      <label className="formP_label" htmlFor="registerName">
+        UserName
+      </label>
+      <input
+        type="text"
+        className={`form-control ${errors.UserName ? "is-invalid" : ""}`}
+        {...register("UserName", {
+          required: "Username Required",
+          maxLength: { value: 20, message: "Max length is 20 characters" },
+        })}
+      />
+      {errors.UserName && (
+        <div className="invalid-feedback">{errors.UserName.message}</div>
+      )}
+
+      <label className="formP_label" htmlFor="registerName">
+        Password
+      </label>
+      <input
+        type="password" // Change this to password type for passwords
+        className={`form-control ${errors.Password ? "is-invalid" : ""}`}
+        {...register("Password", {
+          pattern: {
+            value: /^[A-Za-z]+$/i,
+            message: "Password can only contain letters",
+          },
+          required: "Password Required",
+          maxLength: { value: 20, message: "Max length is 20 characters" },
+        })}
+      />
+      {errors.Password && (
+        <div className="invalid-feedback">{errors.Password.message}</div>
+      )}
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "start",
+          margin: "3%",
+        }}
+      >
+        <input
+          type="checkbox"
+          className="form-check-input"
+          id="exampleCheck1"
+        />
+        &nbsp;
+        <label className="formP_label" htmlFor="exampleCheck1">
+          Check me out
+        </label>
+      </div>
+
+      <button 
+      type="submit" 
+      className="form_login_style" 
+      //  onClick={routeChange}
+       >
+        Submit
+      </button>
+    </form>
         </Col>
       </Row>
     );
@@ -120,13 +145,13 @@ export default function Form_LR() {
                 pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$/,
               })}
             />
-            {errors.password?.type ==='minLength' && (
+            {errors.password?.type =='minLength' && (
               <p  className="form_error">minmum Length is 8 charecter</p>
             )}
-            {errors.password?.type === 'maxLength' && (
+            {errors.password?.type == 'maxLength' && (
               <p  className="form_error">maximum Length is 20 charecter</p>
             )}
-            {errors.password?.type === 'pattern' && (
+            {errors.password?.type == 'pattern' && (
               <div>
               <p className="form_error">should have (0-9)</p><br/>
               <p className="form_error">At least one special character <br/>from the set !@#$%^&*_=+-.</p>
@@ -151,7 +176,7 @@ export default function Form_LR() {
               })}
             />
             {errors.passwordrepeat && <p  className="form_error">password is not matching</p>}
-          </div>
+            </div>
           <br />
           <div
             class="form-check d-flex justify-content-center"
