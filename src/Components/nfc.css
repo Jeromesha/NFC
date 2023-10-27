@@ -18,14 +18,36 @@ main {
   background-size: cover;
 }
 .Form_A {
-  background-color: rgba(0, 0, 0, 0.473);
+  /* background-color: rgba(0, 0, 0, 0.473); */
+  background-color:rgba(68, 93, 72, 0.5);
   border-radius: 5%;
   padding: 4%;
   margin-bottom: 2%;
+  width: 510px;
+}
+@media screen and (min-width:320px) and (max-width:375px) {
+  .Form_A {
+    /* background-color: rgba(0, 0, 0, 0.473); */
+    background-color:rgba(68, 93, 72, 0.5);
+    border-radius: 5%;
+    padding: 4%;
+    margin-bottom: 2%;
+    width: 260px;
+  }
+}
+@media screen and (min-width:425px) and (max-width:768px) {
+  .Form_A {
+    /* background-color: rgba(0, 0, 0, 0.473); */
+    background-color:rgba(68, 93, 72, 0.5);
+    border-radius: 5%;
+    padding: 4%;
+    margin-bottom: 2%;
+    width: 310px;
+  }
 }
 .form_B {
   width: 100%;
-  background-color: #fff42c;
+  background-color: #445D48;
   font-size: small;
   border-radius: 10px;
   padding: 2%;
@@ -39,18 +61,49 @@ main {
 }
 .button_form {
   font-size: 16px;
-  padding: 5%;
+  padding: 4%;
   border: 0px;
+  /* border: 1px solid gray; */
+
   /* border-radius: 6px; */
-  background-color: #fff42c;
+  background-color: #FDE5D4;
   font-size: large;
   font-weight: 500;
   width: 50%;
+
+  border-radius: 5px;
   /* padding: 5px; */
 }
 .button_form:focus {
-  background-color: rgba(0, 0, 0, 0);
-  color: #fff;
+  background-color: #fee0cb;
+  border: none;
+}
+.button_form1 {
+  font-size: 16px;
+  padding: 4%;
+  border: 0px;
+  border: 1px solid gray;
+
+  /* border-radius: 6px; */
+  background-color: #fde1cd;
+  font-size: large;
+  font-weight: 500;
+  border-radius: 5px;
+
+  width: 48%;
+  margin-right: 2%;
+  /* padding: 5px; */
+}
+.form-check{
+  padding-left: 27px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.button_form1:focus {
+  background-color: #fee0cb;
+  border: none;
+
 }
 .form-outline {
   padding: 2%;
@@ -67,10 +120,15 @@ main {
 .formP_label {
   margin-bottom: 3%;
   color: #fff;
+  margin-top: 10px;
+}
+
+.NfcLogin{
+  padding: 0px;
 }
 .form_login_style {
   width: 100%;
-  background-color: #fff42c;
+  background-color: #FDE5D4;
   font-size: small;
   border-radius: 10px;
   padding: 3%;

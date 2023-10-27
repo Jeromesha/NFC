@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "../Components/nfc.css";
 import { Row, Col } from "react-bootstrap";
-import { appendErrors, useForm } from "react-hook-form";
-import { type } from "@testing-library/user-event/dist/type";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 export default function Form_LR() {
@@ -15,24 +14,24 @@ export default function Form_LR() {
   const onSubmit = (data) => {
     console.log(data);
   };
-  
-  let navigate = useNavigate(); 
-  const routeChange = () =>{ 
-    let path = `/dashroute`; 
+
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/dashroute`;
     navigate(path);
-  }
+  };
 
   const Login = () => {
     return (
       <Row>
-        <Col sm={12} mg={12} lg={12} xl={12}>
-          <form onSubmit={handleSubmit(onSubmit)} class="form_outline">
-            <label className="formP_label" for="registerName">
+        <Col className="NfcLogin" sm={12} mg={12} lg={12} xl={12}>
+          <form onSubmit={handleSubmit(onSubmit)} className="form_outline">
+            <label className="formP_label" htmlFor="UserName">
               UserName
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               {...register("UserName", {
                 required: true,
                 maxLength: 20,
@@ -41,38 +40,55 @@ export default function Form_LR() {
             {errors?.UserName?.type === "required" && (
               <p className="form_error">Username Required</p>
             )}
-            <label className="formP_label" for="registerName">
+            <label className="formP_label" htmlFor="Password">
               Password
             </label>
             <input
-              type="text"
-              class="form-control"
+              type="password" // Changed to password type
+              className="form-control"
               {...register("Password", {
-                pattern: /^[A-Za-z]+$/i,
+                pattern:
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/,
                 required: true,
                 maxLength: 20,
               })}
             />
             {errors?.Password?.type === "required" && (
-              <p className="form_error">Password Requires</p>
+              <p className="form_error">Password Required</p>
             )}
-            {errors?.Password?.type === "MaxLength" && (
-              <p>Max length is 20 charecter</p>
+            {errors?.Password?.type === "maxLength" && (
+              <p>Max length is 20 characters</p>
+            )}
+            {errors?.Password?.type === "pattern" && (
+              <p className="form_error">
+                Password should contain at least one lowercase letter, one
+                uppercase letter, one digit, and one special character.
+              </p>
             )}
             <div
-              style={{ display: "flex", justifyContent: "start", margin: "3%" }}
+              style={{
+                display: "flex",
+                justifyContent: "start",
+                alignItems: "center",
+                margin: "3%",
+                paddingLeft: "10px",
+              }}
             >
               <input
                 type="checkbox"
-                class="form-check-input"
+                className="form-check-input"
                 id="exampleCheck1"
               />{" "}
               &nbsp;
-              <label class="formP_label" for="exampleCheck1">
+              <label className="formP_label" htmlFor="exampleCheck1">
                 Check me out
               </label>
             </div>
-            <button type="submit" className="form_login_style" onClick={routeChange}>
+            <button
+              type="submit"
+              className="form_login_style"
+              onClick={routeChange}
+            >
               Submit
             </button>
           </form>
@@ -80,12 +96,13 @@ export default function Form_LR() {
       </Row>
     );
   };
+
   const Register = () => {
     return (
       <div role="tablePanel">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div class="form_outline">
-            <label className="formP_label" for="registerName">
+          <div className="form_outline">
+            <label className="formP_label" htmlFor="userName">
               UserName
             </label>
             <input
@@ -94,78 +111,82 @@ export default function Form_LR() {
                 maxLength: 20,
               })}
               type="text"
-              class="form-control"
-            />  
-            {errors.userName?.type === "required" && <p  className="form_error">This field is required</p>}
+              className="form-control"
+            />
+            {errors.userName?.type === "required" && (
+              <p className="form_error">This field is required</p>
+            )}
           </div>
-          <div class="form_outline">
-            <label className="formP_label" for="registerEmail">
+          <div className="form_outline">
+            <label className="formP_label" htmlFor="registerEmail">
               Email
             </label>
-            <input type="email" id="registerEmail" class="form-control" />
+            <input type="email" id="registerEmail" className="form-control" />
           </div>
 
-          <div class="form_outline">
-            <label className="formP_label" for="registerPassword">
+          <div className="form_outline">
+            <label className="formP_label" htmlFor="registerPassword">
               Password
             </label>
             <input
               type="password"
               id="registerPassword"
-              class="form-control"
+              className="form-control"
               {...register("password", {
                 required: true,
                 minLength: 8,
                 maxLength: 20,
-                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$/,
+                pattern:
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/,
               })}
             />
-            {errors.password?.type ==='minLength' && (
-              <p  className="form_error">minmum Length is 8 charecter</p>
+            {errors.password?.type === "minLength" && (
+              <p className="form_error">Minimum Length is 8 characters</p>
             )}
-            {errors.password?.type === 'maxLength' && (
-              <p  className="form_error">maximum Length is 20 charecter</p>
+            {errors.password?.type === "maxLength" && (
+              <p className="form_error">Maximum Length is 20 characters</p>
             )}
-            {errors.password?.type === 'pattern' && (
-              <div>
-              <p className="form_error">should have (0-9)</p><br/>
-              <p className="form_error">At least one special character <br/>from the set !@#$%^&*_=+-.</p>
-              </div>
+            {errors.password?.type === "pattern" && (
+              <p className="form_error">
+                Password should contain at least one lowercase letter, one
+                uppercase letter, one digit, and one special character.
+              </p>
             )}
           </div>
 
-          <div class="form_outline">
-            <label className="formP_label" for="registerRepeatPassword">
-              Repeat password
+          <div className="form_outline">
+            <label className="formP_label" htmlFor="registerRepeatPassword">
+              Confirm password
             </label>
             <input
               type="password"
               id="registerRepeatPassword"
-              class="form-control"
+              className="form-control"
               {...register("passwordrepeat", {
                 required: true,
                 validate: (value) => {
                   const { password } = getValues();
-                  return password == value || "password is not matching";
+                  return password === value || "Passwords do not match";
                 },
               })}
             />
-            {errors.passwordrepeat && <p  className="form_error">password is not matching</p>}
+            {errors.passwordrepeat && (
+              <p className="form_error">Passwords do not match</p>
+            )}
           </div>
           <br />
           <div
-            class="form-check d-flex justify-content-center"
-            style={{ padding: "2%" }}
+            className="form-check"
           >
             <input
-              class="form-check-input me-2"
+              className="form-check-input me-2"
               type="checkbox"
               value=""
               id="registerCheck"
               checked
               aria-describedby="registerCheckHelpText"
             />
-            <label className="formP_label" for="registerCheck">
+            <label className="formP_label" htmlFor="registerCheck">
               I have read and agree to the terms
             </label>
           </div>
@@ -184,12 +205,17 @@ export default function Form_LR() {
   return (
     <div className="loginPage_nfc">
       <div className="Form_A">
-        <button onClick={() => setActiveTable("Login")} className="button_form">
+        <button
+          onClick={() => setActiveTable("Login")}
+          className={`button_form1 ${activeTable === "Login" ? "active" : ""}`}
+        >
           Login
         </button>
         <button
           onClick={() => setActiveTable("Register")}
-          className="button_form"
+          className={`button_form ${
+            activeTable === "Register" ? "active" : ""
+          }`}
         >
           Register
         </button>
