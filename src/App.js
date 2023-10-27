@@ -12,12 +12,12 @@ import Layout from "./Components/Layout/Index";
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<NfcHome />} />
         {RouteNfc.map(({ path, element: Ele }, index) => (
           <Route key={index} path={path} element={Ele} />
         ))}
-      </Routes> */}
+      </Routes>
             {/* <SideBar>
             <Routes>
               <Route path="/dash" element={<DashBoard />} />
@@ -32,13 +32,12 @@ function App() {
           ))}
         </Route>
       </Routes> */}
-            <Routes>
+            {/* <Routes>
         <Route path="/" element={<Layout />}>
           {DashRoutes.map(({ path, element: Ele }, index) => (
             <Route key={index} path={path} element={Ele} />
           ))}
-        </Route>
-      </Routes>
+        </Route> */}
       {/* <WebPageTemplate/> */}
       {/* <Trail1/> */}
     </Suspense>
