@@ -3,7 +3,7 @@ import { config } from "dotenv";
 import express from "express";
 import cors from "cors";
 import vCard from "./routes/BusinessCardRoutes/vCardRoutes.js";
-
+import auth from "./routes/BusinessCardRoutes/authRoutes.js"
 const app = express();
 
 
@@ -28,6 +28,7 @@ mongoose
     });
 
 app.use("/vcard", vCard);
+app.use("/auth", auth);
 
 app.listen(port, () => {
     console.log("Connected");
