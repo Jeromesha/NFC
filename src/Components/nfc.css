@@ -436,19 +436,61 @@ main {
   border:0px; 
   border-radius:15px;
   padding:1%;
-  background-image:linear-gradient(to bottom right, rgb(33 208 253), rgb(33 87 255));
+  background-color: #64CCC5;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.466), 0 6px 20px 0 rgba(0, 0, 0, 0.452);
 }
 .vcard_detial_btton_discard {
   margin:2%;
   border:0px; 
   border-radius:15px;
   padding:1%;
-  background-image:linear-gradient(to bottom right, rgb(61, 214, 252), rgba(20, 20, 20, 0.329));
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.466), 0 6px 20px 0 rgba(0, 0, 0, 0.452);
 }
-/* ////////////////////////////////////////////////// */
 
-/* 
-=============================trail */
+/* /////////////////////Dash--Background///////////////////////////// */
+.flip_card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip_card_inner {
+  position: relative;
+  width:35vw;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip_card:hover .flip_card_inner {
+  transform: rotateY(180deg);
+}
+
+.flip_card_front, .flip_card_back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip_card_front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip_card_back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* =============================trail */ */
 .btn_dash_level {
   display: flex;
   justify-content: end;

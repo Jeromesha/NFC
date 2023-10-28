@@ -54,11 +54,11 @@ function Sidebar({ collapsed }) {
             Appointments
 
           </NavLink>
-          <NavLink to="enquiries">
+          <NavLink to="backGround">
             <FaThList className="Nav-Icon" />
             Backgrounds
           </NavLink>
-          <NavLink to="vcard">
+          <NavLink to="affiliations">
             <FaCommentAlt className="Nav-Icon" />
             Affiliations
           </NavLink>

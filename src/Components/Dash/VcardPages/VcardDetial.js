@@ -260,7 +260,7 @@ export default function VcardDetial() {
             </div>
           </Col>
         </Row>
-        <div style={{ marginLeft: "4%" }}>
+        <div style={{ marginLeft: "4%"}}>
           <button type="submit" className="vcard_detial_btton_submit">
             Submit
           </button>

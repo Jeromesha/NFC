@@ -8,6 +8,8 @@ import SideBar from "./Components/Dash/SideBar";
 import DashRoutes from "./Components/Dash/DashRoutes";
 
 import Layout from "./Components/Layout/Index";
+import WebPageTemplate from "./Components/WebPageTemplate";
+import WebTemplateOne from "./Components/Dash/WebTemplate/WebTemplateOne";
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
@@ -38,7 +40,7 @@ function App() {
           ))}
         </Route>
       </Routes>
-      {/* <WebPageTemplate/> */}
+      {/* <WebTemplateOne/> */}
       {/* <Trail1/> */}
     </Suspense>
 
