@@ -1,32 +1,55 @@
 import React, { useState } from "react";
 import "../Components/nfc.css";
 import { Row, Col } from "react-bootstrap";
-import {Input} from "antd"
+import { Input } from "antd";
 import { useForm } from "react-hook-form";
 import { type } from "@testing-library/user-event/dist/type";
 import { useNavigate } from "react-router-dom";
+import Api from "../Api";
 
 export default function Form_LR() {
   const {
     register,
     handleSubmit,
     getValues,
+    setValue,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    alert(JSON.stringify(data));
-  };
+
+  // const onSubmit = (data) => {
+  //   console.log(data);
+  //   alert(JSON.stringify(data));
+  // };
 
   let navigate = useNavigate();
-  const routeChange = () => {
-    let path = `/dashroute`;
-    navigate(path);
+  // const routeChange = () => {
+  //   let path = `/dashroute`;
+  //   navigate(path);
+  // };
+  // const handleFormSubmit = async () => {
+  //   const signupDetails = {
+  //     name: getValues().name,
+  //     email: getValues().email,
+  //     phoneNumber: getValues().phoneNumber,
+  //     password: getValues().password,
+  //     confirmPassword: getValues().confirmPassword,
+  //   };
+  //   await Api.post("/auth/signup", signupDetails).then((res) => {
+  //     console.log("res", res);
+  //   });
+  // };
+  const handleFormSubmit = async (id) => {
+    const Details = {
+      email: getValues().email,
+      password: getValues().password,
+    };
+    await Api.put("/auth/login", Details).then((resp) => {
+      console.log("resp.data", resp.data);
+    });
   };
-
   const onSubmite = (data) => {
     const { password, passwordrepeat } = data;
-    
+
     // Add custom password validation logic here
     if (password !== passwordrepeat) {
       alert("Passwords do not match");
@@ -38,97 +61,90 @@ export default function Form_LR() {
 
   const Login = () => {
     return (
-      <Row>
-        <Col className="NfcLogin" sm={12} mg={12} lg={12} xl={12}>
-          <form onSubmit={handleSubmit(onSubmit)} className="form_outline">
-            <label className="formP_label" htmlFor="UserName">
-              UserName
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              {...register("UserName", {
-                required: true,
-                maxLength: 20,
-              })}
-            />
-            {errors?.UserName?.type === "required" && (
-              <p className="form_error">Username Required</p>
-            )}
-            <label className="formP_label" htmlFor="Password">
-              Password
-            </label>
-            <input
-              type="password" // Changed to password type
-              className="form-control"
-              {...register("Password", {
-                pattern:
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/,
-                required: true,
-                maxLength: 20,
-              })}
-            />
-            {errors?.Password?.type === "required" && (
-              <p className="form_error">Password Required</p>
-            )}
-            {errors?.Password?.type === "maxLength" && (
-              <p>Max length is 20 characters</p>
-            )}
-            {errors?.Password?.type === "pattern" && (
-              <p className="form_error">
-                Password should contain at least one lowercase letter, one
-                uppercase letter, one digit, and one special character.
-              </p>
-            )}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "start",
-                alignItems: "center",
-                margin: "3%",
-                paddingLeft: "10px",
-              }}
+      <div>
+        <Row>
+          <Col className="NfcLogin" sm={12} mg={12} lg={12} xl={12}>
+            <form
+              className="form_outline"
+              onSubmit={handleSubmit(handleFormSubmit)}
             >
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              />{" "}
-              &nbsp;
-              <label className="formP_label" htmlFor="exampleCheck1">
-                Check me out
+              <label className="formP_label" htmlFor="UserName">
+                User Email
               </label>
-            </div>
-            <button
-              type="submit"
-              className="form_login_style"
-              onClick={routeChange}
-            >
-              Submit
-            </button>
-          </form>
-        </Col>
-      </Row>
+              <Input
+                className="loginPageInput"
+                placeholder="Enter your Email"
+                {...register("email", { required: true })}
+              />
+              {errors.email && (
+                <span className="Stud-personal-error" style={{color:'red'}}> 
+                  Email is required
+                </span>
+              )}
+
+              <label className="formP_label" htmlFor="Password">
+                Password
+              </label>
+              <Input.Password
+                className="loginPageInput"
+                {...register("password", { required: true })}
+              />
+              {errors.password && (
+                <span className="Stud-personal-error" style={{color:'red'}}>
+                  Password is required
+                </span>
+              )}
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "center",
+                  margin: "3%",
+                  paddingLeft: "10px",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="exampleCheck1"
+                />{" "}
+                &nbsp;
+                <label className="formP_label" htmlFor="exampleCheck1">
+                  Check me out
+                </label>
+              </div>
+              <button
+                className="form_login_style"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+            </form>
+          </Col>
+        </Row>
+      </div>
     );
   };
 
   const Register = () => {
     return (
       <div role="tablePanel">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form>
           <div className="form_outline">
             <label className="formP_label" htmlFor="userName">
               UserName
             </label>
             <input
-              {...register("userName", {
+              type="text"
+              className="form-control"
+              {...register("name", {
                 required: true,
                 maxLength: 20,
               })}
-              type="text"
-              className="form-control"
             />
-            {errors.userName?.type === "required" && (
+            {errors.name?.type === "required" && (
               <p className="form_error">This field is required</p>
             )}
           </div>
@@ -136,7 +152,18 @@ export default function Form_LR() {
             <label className="formP_label" htmlFor="registerEmail">
               Email
             </label>
-            <input type="email" id="registerEmail" className="form-control" />
+            <input
+              type="email"
+              id="registerEmail"
+              className="form-control"
+              {...register("email", {
+                required: true,
+                maxLength: 20,
+              })}
+            />
+            {errors.email?.type === "required" && (
+              <p className="form_error">This field is required</p>
+            )}
           </div>
 
           <div className="form_outline">
@@ -177,7 +204,7 @@ export default function Form_LR() {
               type="password"
               id="registerRepeatPassword"
               className="form-control"
-              {...register("passwordrepeat", {
+              {...register("confirmPassword", {
                 required: true,
                 validate: (value) => {
                   const { password } = getValues();
@@ -185,14 +212,12 @@ export default function Form_LR() {
                 },
               })}
             />
-            {errors.passwordrepeat && (
+            {errors.confirmPassword && (
               <p className="form_error">Passwords do not match</p>
             )}
           </div>
           <br />
-          <div
-            className="form-check"
-          >
+          <div className="form-check">
             <input
               className="form-check-input me-2"
               type="checkbox"
