@@ -4,6 +4,7 @@ const { Schema, model } = mongoose;
 
 const VCardDetail = new Schema({
     // vCardForm: {
+    urlAlias: String,
     vCardName: String,
     occupation: String,
     description: String,

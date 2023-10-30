@@ -6,6 +6,7 @@ export async function createVCardDetail(req, res, next) {
         console.log(req, "data")
         const details = {
             // vCardForm: {
+            urlAlias: data.urlAlias,
             vCardName: data.vCardName,
             occupation: data.occupation,
             description: data.description,
@@ -68,13 +69,10 @@ export async function updateVCardDetail(req, res, next) {
         const id = req.params.id;
         const details = {
             vCardForm: {
+                urlAlias: data.urlAlias,
                 vCardName: data.vCardName,
                 occupation: data.occupation,
                 description: data.description,
-                courseDuration: data.courseDuration,
-                nooflearners: data.nooflearners,
-                imgurl: data.imgurl,
-                link: data.link
             },
             vCardDetails: {
                 firstName: data.firstName,
