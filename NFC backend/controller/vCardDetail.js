@@ -7,6 +7,7 @@ export async function createVCardDetail(req, res, next) {
         console.log(req, "data")
         const details = {
             // vCardForm: {
+            urlAlias: data.urlAlias,
             vCardName: data.vCardName,
             occupation: data.occupation,
             description: data.description,
@@ -21,7 +22,16 @@ export async function createVCardDetail(req, res, next) {
             locationURL: data.locationURL,
             dob: data.dob,
             company: data.company,
-            defaultLanguage: data.defaultLanguage
+            defaultLanguage: data.defaultLanguage,
+            serviceName: data.serviceName,
+            serviceURL: data.serviceURL,
+            serviceDesc: data.serviceDesc,
+            serviceImage: data.serviceImage,
+            productName: data.productName,
+            productPrice: data.productPrice,
+            currency: data.currency,
+            productURL: data.productURL,
+            productDesc: data.productDesc,
             // }
         };
         const createVCardDetail = await VCardDetailDB.create(details);
@@ -68,27 +78,33 @@ export async function updateVCardDetail(req, res, next) {
         const data = req.body;
         const id = req.params.id;
         const details = {
-            vCardForm: {
-                vCardName: data.vCardName,
-                occupation: data.occupation,
-                description: data.description,
-                courseDuration: data.courseDuration,
-                nooflearners: data.nooflearners,
-                imgurl: data.imgurl,
-                link: data.link
-            },
-            vCardDetails: {
-                firstName: data.firstName,
-                lastName: data.lastName,
-                email: data.email,
-                phone: data.phone,
-                alternateEmail: data.alternateEmail,
-                location: data.location,
-                locationURL: data.locationURL,
-                dob: data.dob,
-                company: data.company,
-                defaultLanguage: data.defaultLanguage
-            }
+            // vCardForm: {
+            urlAlias: data.urlAlias,
+            vCardName: data.vCardName,
+            occupation: data.occupation,
+            description: data.description,
+            // },
+            // vCardDetails: {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            phone: data.phone,
+            alternateEmail: data.alternateEmail,
+            location: data.location,
+            locationURL: data.locationURL,
+            dob: data.dob,
+            company: data.company,
+            defaultLanguage: data.defaultLanguage,
+            serviceName: data.serviceName,
+            serviceURL: data.serviceURL,
+            serviceDesc: data.serviceDesc,
+            serviceImage: data.serviceImage,
+            productName: data.productName,
+            productPrice: data.productPrice,
+            currency: data.currency,
+            productURL: data.productURL,
+            productDesc: data.productDesc,
+            // }
         };
         const updateVCardDetail = await VCardDetailDB.findByIdAndUpdate(id, details, {
             new: true,
