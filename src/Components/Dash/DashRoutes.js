@@ -7,6 +7,8 @@
 import BusinessForm from "./BusinessVcardForm/BusinessForm";
 import BusinessTemplate from "./BusinessVcardForm/BusinessTemplate";
 import BusinessHours from "./VcardPages/BusinessHours";
+import BackGround from "./BackGround";
+import DashAffiliations from "./DashAffiliations";
 
     const DashRoutes = [
         {
@@ -38,7 +40,18 @@ import BusinessHours from "./VcardPages/BusinessHours";
           path: "businesshours", // Remove the leading '/'
           name: "BusinessCard",
           element:<BusinessHours/>
+        },
+        {
+          path: "backGround", // Remove the leading '/'
+          name: "backGround",
+          element:<BackGround/>
+        },
+        {
+          path: "affiliations", // Remove the leading '/'
+          name: "affiliations",
+          element:<DashAffiliations/>
         }
+
       ];
       
       export default DashRoutes;
