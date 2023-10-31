@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { BiLogoTumblr, BiSolidMap } from "react-icons/bi";
 import {
@@ -15,13 +15,26 @@ import { TbLetterX } from "react-icons/tb";
 import "../../../Components/nfc.css";
 import { Form, Input, Button, DatePicker, TimePicker, InputNumber } from "antd";
 import TextArea from "antd/es/input/TextArea";
-
+import Api from '../../../Api';
 const { Item } = Form;
 const { RangePicker } = DatePicker;
 export default function WebTemplateOne() {
   const onFinish = (values) => {
     console.log("Received values:", values);
   };
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    Api.get("http://localhost:8080/vcard/getvcarddetail")
+      .then((response) => {
+        setData(response.data);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error("Error in API call", error);
+      });
+  }, []); 
 
   return (
     <div>
@@ -128,7 +141,7 @@ export default function WebTemplateOne() {
           </Col>
         </Row>
       </div>
-      <Row style={{display:"flex", justifyContent:"center"}}>
+      <Row style={{ display: "flex", justifyContent: "center" }}>
         <Col sm={8} md={6} lg={6}>
           <div className="web_temp_qr_div">
             <p className="web_temp_occuupation">QR code</p>
@@ -200,20 +213,24 @@ export default function WebTemplateOne() {
               >
                 Make An Appointment
               </p>
-              <div style={{ display: "flex", justifyContent: "center", margin:"3%" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "3%",
+                }}
+              >
                 <Form
                   layout="vertical"
-                  
-                  style={{color:"white"}}
+                  style={{ color: "white" }}
                   initialValues={{
                     remember: true,
                   }}
                   onFinish={onFinish}
                 >
                   <Item
-                    label={<span style={{color:"white"}}>Date</span>}
-                    
-                    style={{ color: "white"}} 
+                    label={<span style={{ color: "white" }}>Date</span>}
+                    style={{ color: "white" }}
                     name="date"
                     rules={[
                       {
@@ -222,15 +239,13 @@ export default function WebTemplateOne() {
                       },
                     ]}
                   >
-                    <DatePicker placeholder="Date-Month-Year"/>
+                    <DatePicker placeholder="Date-Month-Year" />
                   </Item>
 
                   <Item
-                    label={
-                      <span style={{ color: 'white' }}>Time</span>
-                    }
+                    label={<span style={{ color: "white" }}>Time</span>}
                     name="time"
-                    style={{ color: "white"}} 
+                    style={{ color: "white" }}
                     rules={[
                       {
                         required: true,
@@ -275,7 +290,7 @@ export default function WebTemplateOne() {
               >
                 <div style={{ paddingBottom: "1%", padding: "3%" }}>
                   <Item
-                  label={<span style={{color:"white"}}>Name</span>}
+                    label={<span style={{ color: "white" }}>Name</span>}
                     name="name"
                     style={{ margin: "0px" }}
                     rules={[
@@ -294,7 +309,7 @@ export default function WebTemplateOne() {
                 </div>
                 <div style={{ paddingBottom: "1%", padding: "3%" }}>
                   <Item
-                  label={<span style={{color:"white"}}>Email</span>}
+                    label={<span style={{ color: "white" }}>Email</span>}
                     name="email"
                     style={{ margin: "0px" }}
                     rules={[
@@ -316,7 +331,9 @@ export default function WebTemplateOne() {
                 </div>
                 <div style={{ paddingBottom: "1%", padding: "3%" }}>
                   <Item
-                  label={<span style={{color:"white"}}>Contact Email</span>}
+                    label={
+                      <span style={{ color: "white" }}>Contact Email</span>
+                    }
                     name="contactNumber"
                     style={{ margin: "0px" }}
                     rules={[
@@ -334,7 +351,7 @@ export default function WebTemplateOne() {
                 </div>
                 <div style={{ paddingBottom: "1%", padding: "3%" }}>
                   <Item
-                  label={<span style={{color:"white"}}>Message</span>}
+                    label={<span style={{ color: "white" }}>Message</span>}
                     name="message"
                     style={{ margin: "0px" }}
                     rules={[

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Input, Button, Form } from "antd";
 import { Row, Col } from "react-bootstrap";
 import "../../../Components/nfc.css";
+import Api from "../../../Api";
 
 export default function VcardDetail() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -32,7 +33,14 @@ export default function VcardDetail() {
     form
       .validateFields()
       .then((values) => {
-        console.log(values);
+        // Send a POST request to your API with the form data
+        Api.post('http://localhost:8080/vcard/createvcarddetail', values)
+          .then((response) => {
+            console.log("Data sent successfully:", response);
+          })
+          .catch((error) => {
+            console.error("Error sending data:", error);
+          });
       })
       .catch((errorInfo) => {
         console.log("Validation failed:", errorInfo);
@@ -71,7 +79,7 @@ export default function VcardDetail() {
   return (
     <div>
       <h5>VCard Form</h5>
-      <Form form={form} onFinish={handleSubmit} initialValues={formData}>
+      <Form layout="vertical" form={form} onFinish={handleSubmit} initialValues={formData}>
         <div>
           <Form.Item
           style={{margin:"0px"}}
@@ -83,8 +91,7 @@ export default function VcardDetail() {
                 message: "Please enter Url Alias!",
               },
             ]}
-          ></Form.Item>
-          <Input />
+          ><Input /></Form.Item>
         </div>
 
         <Row gutter={16}>
@@ -100,8 +107,8 @@ export default function VcardDetail() {
                     message: "Please enter VCard Name!",
                   },
                 ]}
-              ></Form.Item>
-              <Input />
+              ><Input /></Form.Item>
+              
             </div>
             <div>
               <Form.Item
@@ -114,8 +121,8 @@ export default function VcardDetail() {
                     message: "Please enter Occupation!",
                   },
                 ]}
-              ></Form.Item>
-              <Input />
+              ><Input /></Form.Item>
+              
             </div>
             <div>
               <Form.Item
@@ -129,7 +136,8 @@ export default function VcardDetail() {
                   },
                 ]}
               >
-              </Form.Item> <Input.TextArea />
+                <Input.TextArea />
+              </Form.Item> 
             </div>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
@@ -190,8 +198,8 @@ export default function VcardDetail() {
                     message: "Please enter First Name!",
                   },
                 ]}
-              ></Form.Item>
-              <Input />
+              ><Input /></Form.Item>
+              
             </div>
             <div>
               <Form.Item
@@ -203,8 +211,7 @@ export default function VcardDetail() {
                     message: "Please enter Last Name!",
                   },
                 ]}
-              ></Form.Item>{" "}
-              <Input />
+              ><Input /></Form.Item>{" "}
             </div>
             <div>
               <Form.Item
@@ -217,44 +224,36 @@ export default function VcardDetail() {
                     message: "Please enter a valid Email!",
                   },
                 ]}
-              ></Form.Item>
-              <Input />
+              ><Input /></Form.Item>
             </div>
             <div>
-              <Form.Item name="phone" label="Phone"></Form.Item>
-              <Input />
+              <Form.Item name="phone" label="Phone"><Input /></Form.Item>
             </div>
             <div>
               <Form.Item
                 name="alternateEmail"
                 label="Alternate Email"
-              ></Form.Item>
-              <Input />
+              > <Input /></Form.Item>
             </div>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
             <div>
-              <Form.Item name="location" label="Location"></Form.Item>
-              <Input />
+              <Form.Item name="location" label="Location"><Input /></Form.Item>
             </div>
             <div>
-              <Form.Item name="locationURL" label="Location URL"></Form.Item>
-              <Input />
+              <Form.Item name="locationURL" label="Location URL"><Input /></Form.Item>
             </div>
             <div>
-              <Form.Item name="dateOfBirth" label="Date of Birth"></Form.Item>
-              <Input />
+              <Form.Item name="dateOfBirth" label="Date of Birth"><Input /></Form.Item>
             </div>
             <div>
-              <Form.Item name="company" label="Company"></Form.Item>
-              <Input />
+              <Form.Item name="company" label="Company"><Input /></Form.Item>
             </div>
             <div>
               <Form.Item
                 name="defaultLanguage"
                 label="Default Language"
-              ></Form.Item>
-              <Input />
+              > <Input /></Form.Item>
             </div>
           </Col>
         </Row>
