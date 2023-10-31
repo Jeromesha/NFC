@@ -97,32 +97,34 @@ export default function Form_LR() {
                   Email is required
                 </span>
               )}
-            
 
               <label className="formP_label" htmlFor="Password">
                 Password
               </label>
-              <div style={{width:"100%"}}>
-              <input
-                className="loginPageInput"
-                placeholder="Enter Your Password"
-                type={passwordShown ? "text" : "password"}
-                {...register("password", { required: true })}
-              />
-              <FontAwesomeIcon
-                icon={passwordShown ? faEye : faEyeSlash}
-                onClick={togglePasswordVisiblity}
-                style={{
-                  cursor: "pointer",
-                  color: "black",
-                  marginLeft: "-25px",
-                }}
-              />
-              {errors.password && (
-                <span className="Stud-personal-error" style={{ color: "red" }}>
-                  Password is required
-                </span>
-              )}
+              <div style={{ width: "100%" }}>
+                <input
+                  className="loginPageInput"
+                  placeholder="Enter Your Password"
+                  type={passwordShown ? "text" : "password"}
+                  {...register("password", { required: true })}
+                />
+                <FontAwesomeIcon
+                  icon={passwordShown ? faEye : faEyeSlash}
+                  onClick={togglePasswordVisiblity}
+                  style={{
+                    cursor: "pointer",
+                    color: "black",
+                    marginLeft: "-25px",
+                  }}
+                />
+                {errors.password && (
+                  <span
+                    className="Stud-personal-error"
+                    style={{ color: "red" }}
+                  >
+                    Password is required
+                  </span>
+                )}
               </div>
               <div className="ForgotPassword_Css">
                 <Link
@@ -173,21 +175,22 @@ export default function Form_LR() {
   };
 
   const Register = () => {
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-      getValues,
-    } = useForm();
     const [passwordShown, setpasswordShown] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-
     const togglePasswordVisiblity = () => {
       setpasswordShown(!passwordShown);
     };
     const togglePasswordVisiblitys = () => {
       setShowPassword(!showPassword);
     };
+
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+      getValues,
+    } = useForm();
+
     const handleFormSignupLogin = async () => {
       const singupDetails = {
         name: getValues().name,
@@ -197,35 +200,42 @@ export default function Form_LR() {
         confirmPassword: getValues().confirmPassword,
       };
       console.log("Details", singupDetails);
-      // await axios
-      //   .post("http://localhost:8080/auth/signup", singupDetails)
-      //   .then((resp) => {
-      //     console.log("resp.data", resp.data);
-      //   });
-      await axios
-        .post("http://localhost:8080/auth/signup", singupDetails)
-        .then((resp) => {
-          console.log("resp.data", resp.data);
 
-          if (resp.data.message === "SignUo successful") {
-            // Display a success message using toast
-            toast.success("Login successful", {
-              position: toast.POSITION.TOP_RIGHT,
-              autoClose: 1000,
-            });
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/auth/signup",
+          singupDetails
+        );
 
-            // Navigate to the home page after 2 seconds
-            setTimeout(() => {
-              // navigate("/");
-            }, 2000); // 2 seconds
-          } else {
-            // Display an error message if login fails
-            toast.error("Signup failed", {
-              position: toast.POSITION.TOP_RIGHT,
-              autoClose: 1000,
-            });
-          }
+        console.log("resp.data", response.data);
+
+        if (response.data.message === "SignUp successful") {
+          // Display a success message using toast
+          toast.success("Sign up successful", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 1000,
+          });
+
+          // Navigate to the home page after 2 seconds
+          setTimeout(() => {
+            // navigate("/");
+          }, 2000); // 2 seconds
+        } else {
+          // Display an error message if signup fails
+          toast.error("Signup failed", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 1000,
+          });
+        }
+      } catch (error) {
+        // Log and handle the error appropriately
+        console.error("Error occurred:", error);
+        // Display an error message using toast or other error handling
+        toast.error("Signup failed", {
+          position: toast.POSITION.TOP_RIGHT,
+          autoClose: 1000,
         });
+      }
     };
 
     return (
@@ -254,13 +264,12 @@ export default function Form_LR() {
               Email
             </label>
             <input
-              type="email"
+              type="text"
               placeholder="Enter Your Mail"
               id="registerEmail"
               className="form-control"
               {...register("email", {
                 required: true,
-                maxLength: 20,
               })}
             />
             {errors.email?.type === "required" && (
@@ -271,21 +280,23 @@ export default function Form_LR() {
             <label className="formP_label" htmlFor="registerPassword">
               Password
             </label>
-            <div  style={{width:"100%",display:"flex",alignItems:"center"}}>
-            <input
-              type={showPassword?"text":"password"}
-              placeholder="Enter Your Password"
-              id="registerPassword"
-              className="form-control"
-              {...register("password", {
-                required: true,
-                minLength: 8,
-                maxLength: 20,
-                pattern:
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/,
-              })}
-            />
-             <FontAwesomeIcon
+            <div
+              style={{ width: "100%", display: "flex", alignItems: "center" }}
+            >
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter Your Password"
+                id="registerPassword"
+                className="form-control"
+                {...register("password", {
+                  required: true,
+                  minLength: 8,
+                  maxLength: 20,
+                  pattern:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/,
+                })}
+              />
+              <FontAwesomeIcon
                 icon={showPassword ? faEye : faEyeSlash}
                 onClick={togglePasswordVisiblitys}
                 style={{
@@ -294,39 +305,41 @@ export default function Form_LR() {
                   marginLeft: "-25px",
                 }}
               />
-            {errors.password?.type === "minLength" && (
-              <p className="form_error">Minimum Length is 8 characters</p>
-            )}
-            {errors.password?.type === "maxLength" && (
-              <p className="form_error">Maximum Length is 20 characters</p>
-            )}
-            {errors.password?.type === "pattern" && (
-              <p className="form_error">
-                Password should contain at least one lowercase letter, one
-                uppercase letter, one digit, and one special character.
-              </p>
-            )}
+              {errors.password?.type === "minLength" && (
+                <p className="form_error">Minimum Length is 8 characters</p>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <p className="form_error">Maximum Length is 20 characters</p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="form_error">
+                  Password should contain at least one lowercase letter, one
+                  uppercase letter, one digit, and one special character.
+                </p>
+              )}
             </div>
           </div>
           <div className="form_outline">
             <label className="formP_label" htmlFor="registerRepeatPassword">
               Confirm password
             </label>
-            <div style={{width:"100%",display:"flex",alignItems:"center"}}>
-            <input
-              type={passwordShown?"text":"password"}
-              placeholder="Enter Your ConfirmPassword"
-              id="registerRepeatPassword"
-              className="form-control"
-              {...register("confirmPassword", {
-                required: true,
-                validate: (value) => {
-                  const { password } = getValues();
-                  return password === value || "Passwords do not match";
-                },
-              })}
-            />
-             <FontAwesomeIcon
+            <div
+              style={{ width: "100%", display: "flex", alignItems: "center" }}
+            >
+              <input
+                type={passwordShown ? "text" : "password"}
+                placeholder="Enter Your ConfirmPassword"
+                id="registerRepeatPassword"
+                className="form-control"
+                {...register("confirmPassword", {
+                  required: true,
+                  validate: (value) => {
+                    const { password } = getValues();
+                    return password === value || "Passwords do not match";
+                  },
+                })}
+              />
+              <FontAwesomeIcon
                 icon={passwordShown ? faEye : faEyeSlash}
                 onClick={togglePasswordVisiblity}
                 style={{
@@ -335,9 +348,9 @@ export default function Form_LR() {
                   marginLeft: "-25px",
                 }}
               />
-            {errors.confirmPassword && (
-              <p className="form_error">Passwords do not match</p>
-            )}
+              {errors.confirmPassword && (
+                <p className="form_error">Passwords do not match</p>
+              )}
             </div>
           </div>
           <br />

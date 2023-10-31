@@ -1,7 +1,7 @@
 import { hash, compare } from 'bcrypt';
 import User from '../model/UserModel.js';
 import jwt from 'jsonwebtoken';
-const nodemailer = require('nodemailer');
+import  nodemailer from 'nodemailer';
 
 export async function signup(req, res) {
   try {
