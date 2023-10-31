@@ -67,3 +67,39 @@ export async function login(req, res) {
     res.status(500).json({ message: "Server error" });
   }
 }
+export async function update (req, res) {
+  try {
+    const { email, currentPassword, newPassword } = req.body;
+
+  
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+   
+    const passwordMatch = await compare(currentPassword, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Invalid current password' });
+    }
+
+   
+    const hashedPassword = await hash(newPassword, 10);
+
+
+    user.password = hashedPassword;
+    await user.save();
+
+    
+    const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
+      expiresIn: '1h',
+    });
+
+    res.status(200).json({ message: 'Password updated successfully', token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+}
