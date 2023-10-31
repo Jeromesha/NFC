@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Form_LR() {
   // const onSubmit = (data) => {
   //   console.log(data);
   //   alert(JSON.stringify(data));
   // };
-
-  
 
   // const onSubmite = (data) => {
   //   const { password, passwordrepeat } = data;
@@ -30,7 +30,10 @@ export default function Form_LR() {
 
   const Login = () => {
     // const navigate = useNavigate();
-
+    const [passwordShown, setpasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+      setpasswordShown(!passwordShown);
+    };
     const {
       register,
       handleSubmit,
@@ -94,23 +97,44 @@ export default function Form_LR() {
                   Email is required
                 </span>
               )}
+            
 
               <label className="formP_label" htmlFor="Password">
                 Password
               </label>
+              <div style={{width:"100%"}}>
               <input
                 className="loginPageInput"
                 placeholder="Enter Your Password"
-                type="password"
+                type={passwordShown ? "text" : "password"}
                 {...register("password", { required: true })}
+              />
+              <FontAwesomeIcon
+                icon={passwordShown ? faEye : faEyeSlash}
+                onClick={togglePasswordVisiblity}
+                style={{
+                  cursor: "pointer",
+                  color: "black",
+                  marginLeft: "-25px",
+                }}
               />
               {errors.password && (
                 <span className="Stud-personal-error" style={{ color: "red" }}>
                   Password is required
                 </span>
               )}
+              </div>
               <div className="ForgotPassword_Css">
-                <Link style={{color:"white",textDecoration:"none",cursor:"pointer"}} to="/ForgotPassword">ForgotPassword?</Link>
+                <Link
+                  style={{
+                    color: "white",
+                    textDecoration: "none",
+                    cursor: "pointer",
+                  }}
+                  to="/ForgotPassword"
+                >
+                  ForgotPassword?
+                </Link>
               </div>
 
               <div
@@ -155,7 +179,15 @@ export default function Form_LR() {
       formState: { errors },
       getValues,
     } = useForm();
+    const [passwordShown, setpasswordShown] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
+    const togglePasswordVisiblity = () => {
+      setpasswordShown(!passwordShown);
+    };
+    const togglePasswordVisiblitys = () => {
+      setShowPassword(!showPassword);
+    };
     const handleFormSignupLogin = async () => {
       const singupDetails = {
         name: getValues().name,
@@ -207,7 +239,6 @@ export default function Form_LR() {
             <input
               type="text"
               placeholder="Enter Your UserName"
-
               className="form-control"
               {...register("name", {
                 required: true,
@@ -225,7 +256,6 @@ export default function Form_LR() {
             <input
               type="email"
               placeholder="Enter Your Mail"
-
               id="registerEmail"
               className="form-control"
               {...register("email", {
@@ -241,8 +271,9 @@ export default function Form_LR() {
             <label className="formP_label" htmlFor="registerPassword">
               Password
             </label>
+            <div  style={{width:"100%",display:"flex",alignItems:"center"}}>
             <input
-              type="password"
+              type={showPassword?"text":"password"}
               placeholder="Enter Your Password"
               id="registerPassword"
               className="form-control"
@@ -254,6 +285,15 @@ export default function Form_LR() {
                   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,20}$/,
               })}
             />
+             <FontAwesomeIcon
+                icon={showPassword ? faEye : faEyeSlash}
+                onClick={togglePasswordVisiblitys}
+                style={{
+                  cursor: "pointer",
+                  color: "black",
+                  marginLeft: "-25px",
+                }}
+              />
             {errors.password?.type === "minLength" && (
               <p className="form_error">Minimum Length is 8 characters</p>
             )}
@@ -266,15 +306,16 @@ export default function Form_LR() {
                 uppercase letter, one digit, and one special character.
               </p>
             )}
+            </div>
           </div>
           <div className="form_outline">
             <label className="formP_label" htmlFor="registerRepeatPassword">
               Confirm password
             </label>
+            <div style={{width:"100%",display:"flex",alignItems:"center"}}>
             <input
-              type="password"
+              type={passwordShown?"text":"password"}
               placeholder="Enter Your ConfirmPassword"
-
               id="registerRepeatPassword"
               className="form-control"
               {...register("confirmPassword", {
@@ -285,9 +326,19 @@ export default function Form_LR() {
                 },
               })}
             />
+             <FontAwesomeIcon
+                icon={passwordShown ? faEye : faEyeSlash}
+                onClick={togglePasswordVisiblity}
+                style={{
+                  cursor: "pointer",
+                  color: "black",
+                  marginLeft: "-25px",
+                }}
+              />
             {errors.confirmPassword && (
               <p className="form_error">Passwords do not match</p>
             )}
+            </div>
           </div>
           <br />
           <div className="form-check">

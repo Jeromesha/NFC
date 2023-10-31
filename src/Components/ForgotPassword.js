@@ -7,6 +7,9 @@ import "../Components/nfc.css";
 import OTPInput from "otp-input-react";
 import { Form } from "antd";
 import { Link } from "react-router-dom";
+import { RxDoubleArrowLeft } from "react-icons/rx";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ForgotPasswordForm({
   setComponentName,
@@ -46,14 +49,14 @@ function ForgotPasswordForm({
               style={{
                 fontSize: "14px",
                 display: "flex",
-                textAlign: "center",
                 color: "white",
                 textDecoration: "none",
                 cursor: "pointer",
+                alignItems:"baseline"
               }}
             >
-              <span style={{ fontSize: "1px" }}>
-                {/* <RxDoubleArrowLeft style={{ paddingRight: "5px" }} /> */}
+              <span style={{ fontSize: "24px" }}>
+                <RxDoubleArrowLeft style={{ paddingRight: "5px" }} />
               </span>
               Back to Login
             </Link>
@@ -107,11 +110,15 @@ function Otp({ setComponentName }) {
                   display: "flex",
                   textAlign: "center",
                   color:"white",
-                  textDecoration:"none"
+                  textDecoration:"none",
+                  cursor: "pointer",
+                  alignItems:"baseline"
+  
+                  
                 }}
               >
-                <span style={{ fontSize: "14px" }}>
-                  {/* <RxDoubleArrowLeft style={{ paddingRight: "5px" }} /> */}
+                <span style={{ fontSize: "24px" }}>
+                  <RxDoubleArrowLeft style={{ paddingRight: "5px" }} />
                 </span>
                 Back
               </Link>
@@ -136,7 +143,18 @@ function ChangePassword({
   register,
   errors,
   onSubmit,
-}) {
+}) 
+{
+  let [passwordShown, setpasswordShown] = useState(false);
+const [showPassword, setShowPassword] = useState(false);
+
+const togglePasswordVisiblity = () => {
+  setpasswordShown(!passwordShown);
+};
+const togglePasswordVisiblitys = () => {
+  setShowPassword(!showPassword);
+};
+
   return (
     <Row>
       <Col className="NfcLogin" sm={12} mg={12} lg={12} xl={12}>
@@ -144,45 +162,82 @@ function ChangePassword({
           <label className="formP_label" htmlFor="Email">
             New Password
           </label>
+          <div style={{width:"100%"}}>
           <input
             className="loginPageInput"
             placeholder="Enter Your New Password"
-            type="text"
+            type={showPassword?"text":"password"}
             {...register("NewPassword", { required: true })}
           />
+           <FontAwesomeIcon
+                icon={showPassword ? faEye : faEyeSlash}
+                onClick={togglePasswordVisiblitys}
+                style={{
+                  cursor: "pointer",
+                  color: "black",
+                  marginLeft: "-25px",
+                }}
+              />
           {errors.NewPassword && (
             <span className="Stud-personal-error" style={{ color: "red" }}>
               NewPassword is required
             </span>
           )}
+          
+          </div>
           <label className="formP_label" htmlFor="Email">
             Confirm Password
           </label>
+          <div style={{width:"100%"}}>
           <input
             className="loginPageInput"
             placeholder="Enter Your Confirm Password"
-            type="text"
+            type={passwordShown?"text":"password"}
             {...register("ConfirmPassword", { required: true })}
           />
+          <FontAwesomeIcon
+                icon={passwordShown ? faEye : faEyeSlash}
+                onClick={togglePasswordVisiblity}
+                style={{
+                  cursor: "pointer",
+                  color: "black",
+                  marginLeft: "-25px",
+                }}
+              />
           {errors.ConfirmPassword && (
             <span className="Stud-personal-error" style={{ color: "red" }}>
               Confirm Password is required
             </span>
           )}
-          <div
-            // className="loginPage_button_backIcon"
-            style={{ marginTop: "10px" }}
-          >
-            <Link
-              onClick={() => setComponentName("Otpinput")}
-              style={{ fontSize: "10px", display: "flex", textAlign: "center" }}
-            >
-              <span style={{ fontSize: "14px" }}>
-                {/* <RxDoubleArrowLeft style={{ paddingRight: "5px" }} /> */}
-              </span>
-              Back
-            </Link>
           </div>
+         <div
+              // className="loginPage_button_backIcon"
+              style={{
+                marginTop: "10px",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Link
+                onClick={() => setComponentName("ForgotPassword")}
+                style={{
+                  fontSize: "16px",
+                  display: "flex",
+                  textAlign: "center",
+                  color:"white",
+                  textDecoration:"none",
+                  cursor: "pointer",
+                  alignItems:"baseline"
+  
+                  
+                }}
+              >
+                <span style={{ fontSize: "24px" }}>
+                  <RxDoubleArrowLeft style={{ paddingRight: "5px" }} />
+                </span>
+                Back
+              </Link>
+            </div>
 
           <div className="ForgotPassword_emailSend_container">
             <button
