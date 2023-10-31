@@ -9,7 +9,7 @@ const router = Router();
 
 router.route("/signup").post(signup);
 router.route("/login").post(login);
-router.route("/update-password").post(updatepassword);
+router.route("/update-password/:id").post(updatepassword);
 router.route("/verify-otp").post(verifyotp);
 router.route("/send-otp").post(otp);
 

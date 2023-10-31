@@ -36,5 +36,5 @@ app.use("/settings", settings);
 
 
 app.listen(port, () => {
-    console.log("Connected");
+    console.log("Connected",`${port}`);
 });
