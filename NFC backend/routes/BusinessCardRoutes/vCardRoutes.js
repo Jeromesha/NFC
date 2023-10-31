@@ -9,9 +9,9 @@ import {
 
 const router = Router();
 
-router.route("/createVCardDetail").post(createVCardDetail);
-router.route("/getVCardDetail").get(getVCardDetail);
-router.route("/updateVCardDetail/:id").put(updateVCardDetail);
-router.route("/deleteVCardDetail/:id").delete(deleteVCardDetail);
+router.route("/createvcarddetail").post(createVCardDetail);
+router.route("/getvcarddetail").get(getVCardDetail);
+router.route("/updatevcarddetail/:id").put(updateVCardDetail);
+router.route("/deletevcarddetail/:id").delete(deleteVCardDetail);
 
 export default router;
