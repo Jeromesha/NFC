@@ -60,8 +60,8 @@ export default function Enquiries() {
   ];
 
   return (
-    <div>
-      <h1>Enquiries</h1>
+    <div style={{padding:"2%"}}>
+      <h3>Enquiries</h3>
       <div style={{paddingLeft:"2%"}}>
             <Table columns={columns} dataSource={data} />
         </div>

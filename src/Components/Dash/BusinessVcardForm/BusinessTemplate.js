@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { AiOutlineDownload, AiOutlineQrcode } from "react-icons/ai";
 import { HiOutlineDocumentText } from "react-icons/hi";
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import '../../../Components/nfc.css';
 
 export default function BusinessTemplate() {
     const [hotelSet, setHotelSet] = useState('cardDetial');
@@ -77,7 +78,7 @@ export default function BusinessTemplate() {
       <div>
         <div style={{padding:"2%"}}>
         <button 
-        className='btn_dash_level'
+        className='vcard_detial_btton_submit'
          onClick={handleNavigate}
          >
             NewCard

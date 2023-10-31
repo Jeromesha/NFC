@@ -366,14 +366,14 @@ main {
 .dash_table_border {
   border-radius: 0px;
 }
-
 .Hotel_head {
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
   border-bottom: 2px solid rgb(126, 124, 124);
-  position: relative;
- 
+  overflow: auto;
+  white-space: nowrap;
 }
+
 .sliding-list {
 		
     }
@@ -395,7 +395,7 @@ main {
     padding: 15px 20px;
     position: relative;
   }
- .vcard_dash_nav:after{    
+ .vcard_dash_nav:after {    
     background: none repeat scroll 0 0 transparent;
     bottom: 0;
     content: "";
@@ -408,11 +408,17 @@ main {
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
   }
- .vcard_dash_nav:hover:after{ 
+ .vcard_dash_nav:hover:after { 
     width: 100%; 
     color: #000000;
     left: 0; 
   }
+  .vcard_dash_nav.active {
+    color: #000000;
+    font-weight: bold; /* Make the text bold */
+    
+  }
+  
 .vcard_dash_div {
   padding: 1%;
   margin: 2%;
@@ -490,6 +496,97 @@ main {
   transform: rotateY(180deg);
 }
 
+/* =========================== business-Hours */
+
+.businessHrs_dash_vp_label {
+  padding: 3%;
+  font-size: 18px;
+}
+.businessHrs_dash_vp_Select {
+  padding: 1%;
+  width: 5rem;
+}
+
+/* =================================== qr-code */
+.btn_qr_bck_clr {
+  padding: 4%;
+    border-radius: 10px;
+    background-color: #1677ff;
+    color: white;
+    border: 0px;
+    box-shadow: rgba(0, 0, 0, 0.062), 0 6px 20px 0 rgba(0, 0, 0, 0.308);
+}
+/* =============================wev_template */ */
+
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+.web_temp_profile {
+  width: 13%;
+  height: 13vw;
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  bottom: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.web_temp_name {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #aaaaaa;
+}
+.web_temp_occuupation {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #707070;
+  text-align: center;
+}
+.web_temp_comname {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #3d3d3d;
+}
+.web_temp_discription {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #3d3d3d;
+  text-align: center;
+}
+.web_temp_cont {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #6666ff;
+  text-align: center;
+}
+.web_temp_qr_div {
+  background-color: pink;
+    padding: 3%;
+    margin: 4%;
+    border-radius: 11px;
+}
+.web_temp_card {
+  margin: 10%;
+  box-shadow: rgba(0, 0, 0, 0.425), 0 6px 20px 0 rgba(0, 0, 0, 0.562);
+}
+.web_temp_card_name {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.web_temp_appin_div {
+  margin: 3%;
+  background-color: #ff751a;
+  border-radius: 15px;
+}
+.web_temp_en_div {
+  background-color: #3A4D39;
+  border-radius: 15px;
+  margin: 3%;
+}
 /* =============================trail */ */
 .btn_dash_level {
   display: flex;

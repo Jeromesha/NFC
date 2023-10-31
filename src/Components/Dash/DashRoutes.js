@@ -9,6 +9,10 @@ import BusinessTemplate from "./BusinessVcardForm/BusinessTemplate";
 import BusinessHours from "./VcardPages/BusinessHours";
 import BackGround from "./BackGround";
 import DashAffiliations from "./DashAffiliations";
+import Setting from "./Setting";
+import TemplateBox from "./VcardPages/TemplateBox";
+import Appointments from "./VcardPages/Appointments";
+import DashAppoinment from "./DashAppoinment";
 
     const DashRoutes = [
         {
@@ -20,6 +24,11 @@ import DashAffiliations from "./DashAffiliations";
           path: "enquiries", // Remove the leading '/'
           name: "enquiries",
           element: <Enquiries />,
+        },
+        {
+          path: "dashAppointments", // Remove the leading '/'
+          name: "dashAppointments",
+          element: <DashAppoinment />,
         },
         {
           path: "dash", // Remove the leading '/'
@@ -50,8 +59,17 @@ import DashAffiliations from "./DashAffiliations";
           path: "affiliations", // Remove the leading '/'
           name: "affiliations",
           element:<DashAffiliations/>
+        },
+        {
+          path: "setting", // Remove the leading '/'
+          name: "setting",
+          element:<Setting/>
+        },
+        {
+          path: "TemplateBox", // Remove the leading '/'
+          name: "TemplateBox",
+          element:<TemplateBox/>
         }
-
       ];
       
       export default DashRoutes;

@@ -9,6 +9,7 @@ import cardF2 from '../../Assert/Background/card2Front.png';
 export default function BackGround() {
   return (
     <div style={{padding:"2%"}}>
+      <h3>BackGround</h3>
       <Row>
         <Col>
         <div class="flip_card">

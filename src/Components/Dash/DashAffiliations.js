@@ -67,8 +67,9 @@ export default function DashAffiliations() {
   const [tableChange, setTableChange] = useState('AffilicationTable')
 
   return (
-    <div style={{padding:"3%"}}>
-      <h2>Affiliations</h2>
+    <div >
+      <h3>Affiliations</h3>
+      <div style={{padding:"4%"}}>
       <Row>
         <Col style={{display:"flex"}}>
           <Input placeholder="Basic usage" />
@@ -78,8 +79,8 @@ export default function DashAffiliations() {
           <Button> send invite</Button>
         </Col>
       </Row>
-      <div style={{padding:"4%"}}>
-        <Row>
+      <div style={{paddingTop:"3%"}}>
+        <Row >
           <Col>
             <Card style={{display:"flex", flexDirection:"row", justifyContent:"space-around", padding:"4%", backgroundColor:"#0ac074", borderRadius:"10px"}}>
               <Card.Title>Total Affiliation Amount</Card.Title>
@@ -101,14 +102,15 @@ export default function DashAffiliations() {
         </h5>
       </div>
       <div >
-        <div style={{marginRight:"4%"}}>
+        <div style={{paddingTop:"4%", paddingRight:"15px", paddingLeft:"15px"}}>
         <Button onClick={()=> setTableChange('AffilicationTable')}>Affiliation</Button>
         <Button onClick={()=> setTableChange('WithdrawTable')}>Withdrawal</Button>
         </div>
-        <div style={{padding:"4%"}}>
+        <div style={{paddingTop:"2%"}}>
             {tableChange === 'AffilicationTable' && <Table columns={columns} dataSource={data} /> }
             {tableChange === 'WithdrawTable' && <Table columns={columnse} dataSource={datae} />}
         </div>
+      </div>
       </div>
     </div>
   );

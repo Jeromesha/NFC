@@ -1,4 +1,7 @@
-import React from 'react'
+import { Space, Switch, Table, Tag, Tooltip } from 'antd';
+import React, { useState } from 'react';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { BsEyeFill } from 'react-icons/bs';
 
 export default function DashAppoinment() {
 
@@ -44,7 +47,7 @@ export default function DashAppoinment() {
           key: "action",
           render: (text, record) => (
             <Space size="middle">
-                    <Tooltip title="Delete"><BsEyeFill size={20}/></Tooltip>
+                <Tooltip title="Delete"><BsEyeFill size={20}/></Tooltip>
                 <Tooltip title="Delete"><DeleteOutlined size={20} style={{color:"red"}}/></Tooltip>
             </Space>
           ),
@@ -66,8 +69,8 @@ export default function DashAppoinment() {
       ];
     
       return (
-        <div>
-          <h1>Enquiries</h1>
+        <div style={{padding:"2%"}}>
+          <h3>Appointments</h3>
           <div style={{paddingLeft:"2%"}}>
                 <Table columns={columns} dataSource={data} />
             </div>

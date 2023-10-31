@@ -1,57 +1,79 @@
-import React from "react";
-import { Col, Row } from "react-bootstrap";
-import { BsFacebook, BsGlobe2, BsInstagram, BsLinkedin, BsWhatsapp } from "react-icons/bs";
+// import React from "react";
+// import { Col, Row } from "react-bootstrap";
+// import { BsFacebook, BsGlobe2, BsInstagram, BsLinkedin, BsWhatsapp } from "react-icons/bs";
 import { TbLetterX } from "react-icons/tb";
-import { FiMail } from "react-icons/fi";
+// import { FiMail } from "react-icons/fi";
 import { BiLogoTumblr } from "react-icons/bi";
+import React from 'react';
+import { Row, Col, Input, Button, Form } from 'antd';
+import {
+  GlobalOutlined,
+  LinkedinOutlined,
+  InstagramOutlined,
+  FacebookOutlined,
+  MailOutlined,
+  WhatsAppOutlined,
+  CloseCircleFilled,
+} from '@ant-design/icons';
 
 export default function SocialMediaLinks() {
+  const [form] = Form.useForm();
+
+  const onFinish = (values) => {
+    // Handle form submission
+    console.log(values);
+  };
+
   return (
-    <div>
-      <form>
-        <Row>
-          <Col sm={12} md={6} lg={6} xl={6}>
-            <div style={{padding:"3%"}}>
-              <BsGlobe2 size={30}/>
-              <input type="text" placeholder="WebSite URL" style={{marginLeft:"2%", width:"80%"}}></input>
-            </div>
-            <div style={{padding:"3%"}}>
-              <BsLinkedin size={30}/>
-              <input type="text" placeholder="LinkedIn URL" style={{marginLeft:"2%", width:"80%"}}></input>
-            </div>
-            <div style={{padding:"3%"}}>
-              <BsInstagram size={30}/>
-              <input type="text" placeholder="Instagram URL"  style={{marginLeft:"2%", width:"80%"}}></input>
-            </div>
-            <div style={{padding:"3%"}}>
-              <BsFacebook size={30}/>
-              <input type="text" placeholder="Facebook URL" style={{marginLeft:"2%", width:"80%"}}></input>
-            </div>
-          </Col>
-          <Col sm={12} md={6} lg={6} xl={6}>
-            <div style={{padding:"3%"}}>
-              <TbLetterX size={30}/>
-              <input type="text" placeholder="X URL" style={{marginLeft:"2%", width:"80%"}}></input>
-            </div>
-            <div style={{padding:"3%"}}>
-              <FiMail size={30}/>
-              <input type="text" placeholder="E-mail URL" style={{marginLeft:"2%", width:"80%"}}></input>
-            </div>
-            <div style={{padding:"3%"}}>
-              <BiLogoTumblr size={30}/>
-              <input type="text" placeholder="Tumbler URL" style={{marginLeft:"2%", width:"80%"}}></input>
-            </div>
-            <div style={{padding:"3%"}}>
-              <BsWhatsapp size={30}/>
-              <input type="text" placeholder="Whatsapp URL" style={{marginLeft:"2%", width:"80%"}}></input>
-            </div>
-          </Col>
-        </Row>
-        <div>
-            <button type="submit" className="vcard_detial_btton_submit">Submit</button>
-            <button type="submit" className="vcard_detial_btton_discard">Discard</button>
-        </div>
-      </form>
-    </div>
+    <Form form={form} onFinish={onFinish}>
+      <Row gutter={[16, 16]}>
+        <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+          <Form.Item name="website" label={<GlobalOutlined style={{ fontSize: '30px' }} />}>
+            <Input placeholder="WebSite URL" />
+          </Form.Item>
+
+          <Form.Item name="linkedin" label={<LinkedinOutlined style={{ fontSize: '30px' }} />}>
+            <Input placeholder="LinkedIn URL" />
+          </Form.Item>
+
+          <Form.Item name="instagram" label={<InstagramOutlined style={{ fontSize: '30px' }} />}>
+            <Input placeholder="Instagram URL" />
+          </Form.Item>
+
+          <Form.Item name="facebook" label={<FacebookOutlined style={{ fontSize: '30px' }} />}>
+            <Input placeholder="Facebook URL" />
+          </Form.Item>
+        </Col>
+        <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+          <Form.Item name="x" label={<TbLetterX style={{ fontSize: '30px' }} />}>
+            <Input placeholder="X URL" />
+          </Form.Item>
+
+          <Form.Item name="email" label={<MailOutlined style={{ fontSize: '30px' }} />}>
+            <Input placeholder="E-mail URL" />
+          </Form.Item>
+
+          <Form.Item name="tumblr" label={<BiLogoTumblr style={{ fontSize: '30px' }} />}>
+            <Input placeholder="Tumblr URL" />
+          </Form.Item>
+
+          <Form.Item name="whatsapp" label={<WhatsAppOutlined style={{ fontSize: '30px' }} />}>
+            <Input placeholder="WhatsApp URL" />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row justify="end" style={{ marginTop: '20px' }}>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+          <Button style={{ marginLeft: '8px' }} onClick={() => form.resetFields()}>
+            Discard
+          </Button>
+        </Form.Item>
+      </Row>
+    </Form>
   );
 }
+

@@ -1,11 +1,15 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { Checkbox, Select, Button, Form } from "antd";
+import { Row, Col } from "react-bootstrap";
+import "../../../Components/nfc.css";
+
+const { Option } = Select;
 
 export default function BusinessHours() {
   const Value = {
     Time: [
       "12 AM",
-      "2 AM",
+      "1 AM",
       "2 AM",
       "3 AM",
       "4 AM",
@@ -17,7 +21,7 @@ export default function BusinessHours() {
       "10 AM",
       "11 AM",
       "12 PM",
-      "2 PM",
+      "1 PM",
       "2 PM",
       "3 PM",
       "4 PM",
@@ -32,157 +36,187 @@ export default function BusinessHours() {
   };
 
   return (
-    <div style={{padding:"3%"}}>
-        <form>
-      <Row>
-        <Col lg={2}>
-        <input type="checkbox" ></input> &nbsp;
-        <label style={{padding:"3%"}}>Monday</label>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={2}>
-        <input type="checkbox" ></input> &nbsp;
-        <label style={{padding:"3%"}}>Tuesday</label>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={2}>
-        <input type="checkbox" ></input> &nbsp;
-        <label style={{padding:"3%"}}>Wednesday</label>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={2}>
-        <input type="checkbox" ></input> &nbsp;
-        <label style={{padding:"3%"}}>Thrusday</label>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={2}>
-        <input type="checkbox" ></input> &nbsp;
-        <label style={{padding:"3%"}}>Friday</label>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={2}>
-        <input type="checkbox" ></input> &nbsp;
-        <label style={{padding:"3%"}}>Saturday</label>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-      </Row>
-       <Row>
-        <Col lg={2}>
-        <input type="checkbox" ></input> &nbsp;
-        <label style={{padding:"3%"}}>Sunday</label>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-        <Col lg={2}>
-        <select>
-          {Value.Time.map((hour, index) => (
-            <option key={index}>{hour}</option>
-          ))}
-        </select>
-        </Col>
-      </Row>
-      <div style={{ marginLeft: "4%" }}>
-            <button type="submit" className="vcard_detial_btton_submit">
-              Submit
-            </button>
-            <button type="submit" className="vcard_detial_btton_discard">
-              Discard
-            </button>
-          </div>
-          </form>
+    <div style={{ padding: "3%" }}>
+      <Form>
+        <Row gutter={[16, 16]}>
+          <Col lg={4}>
+            <Checkbox />
+            <label className="businessHrs_dash_vp_label">Monday</label>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col lg={4}>
+            <Checkbox />
+            <label className="businessHrs_dash_vp_label">TuesDay</label>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col lg={4}>
+            <Checkbox />
+            <label className="businessHrs_dash_vp_label">WednesDay</label>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col lg={4}>
+            <Checkbox />
+            <label className="businessHrs_dash_vp_label">ThrusDay</label>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col lg={4}>
+            <Checkbox />
+            <label className="businessHrs_dash_vp_label">FriDay</label>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col lg={4}>
+            <Checkbox />
+            <label className="businessHrs_dash_vp_label">Saturday</label>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+        <Row gutter={[16, 16]}>
+          <Col lg={4}>
+            <Checkbox />
+            <label className="businessHrs_dash_vp_label">Sunday</label>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+          <Col lg={4}>
+            <Select className="businessHrs_dash_vp_Select" mode="single">
+              {Value.Time.map((hour, index) => (
+                <Option key={index} value={hour}>
+                  {hour}
+                </Option>
+              ))}
+            </Select>
+          </Col>
+        </Row>
+        <Row style={{ paddingTop:"5%", display:"flex", justifyContent:"end"}}>
+          <Col sm={6} lg={2}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+          </Col>
+          <Col sm={6} lg={2}>
+          <Button type="default">Discard</Button>
+          </Col>
+        </Row>
+      </Form>
     </div>
   );
 }
