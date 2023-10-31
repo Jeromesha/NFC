@@ -10,8 +10,8 @@ const router = Router();
 router.route("/signup").post(signup);
 router.route("/login").post(login);
 router.route("/update-password").post(updatepassword);
-router.route("/send-otp").post(verifyotp);
-router.route("/verify-otp").post(otp);
+router.route("/verify-otp").post(verifyotp);
+router.route("/send-otp").post(otp);
 
 // router.get('/user-profile', authorizeUser, (req, res) => {
 //   res.json({ message: 'User profile', user: req.user });
