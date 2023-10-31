@@ -78,7 +78,7 @@ export async function login(req, res) {
 
 const users = new Map();
 
-console.log
+
 function generateOTP() {
   return Math.floor(1000 + Math.random() * 9000).toString();
 }
