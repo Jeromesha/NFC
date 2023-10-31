@@ -122,6 +122,7 @@ main {
   background-color: aqua;
 }
 .formP_label {
+  font-size: 18px;
   margin-bottom: 3%;
   color: #fff;
   margin-top: 10px;
@@ -718,4 +719,29 @@ main {
 }
 .vcard_detial_label {
   font-size: large;
+}
+
+
+
+/* forgot Password Flow CSS */
+
+.ForgotPassword_emailSend_container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ForgotPassword_emailSend{
+  background-color: #FDE5D4;
+  border:none;
+  border-radius: 3px;
+  padding: 3px 10px;
+  margin-top: 16px;
+}
+.ForgotPasswor_otpInput{
+  width: 100% !important;
+}
+.ForgotPassword_Css{
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
 }

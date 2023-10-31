@@ -1,15 +1,15 @@
 import "./App.css";
 import NfcHome from "./Components/NfcHome";
 import { Suspense } from "react";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import RouteNfc from "../src/RouteNfc";
-import Form_LR from "./Components/Form_LR";
-import SideBar from "./Components/Dash/SideBar";
-import DashRoutes from "./Components/Dash/DashRoutes";
+// import Form_LR from "./Components/Form_LR";
+// import SideBar from "./Components/Dash/SideBar";
+// import DashRoutes from "./Components/Dash/DashRoutes";
 
-import Layout from "./Components/Layout/Index";
-import WebPageTemplate from "./Components/WebPageTemplate";
-import WebTemplateOne from "./Components/Dash/WebTemplate/WebTemplateOne";
+// import Layout from "./Components/Layout/Index";
+// import WebPageTemplate from "./Components/WebPageTemplate";
+// import WebTemplateOne from "./Components/Dash/WebTemplate/WebTemplateOne";
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>

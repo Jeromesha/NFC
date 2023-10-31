@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import "../Components/nfc.css";
 import { Row, Col } from "react-bootstrap";
-import { Input } from "antd";
 import { useForm } from "react-hook-form";
-import { type } from "@testing-library/user-event/dist/type";
-import { useNavigate } from "react-router-dom";
-import Api from "../Api";
+import { Link } from "react-router-dom";
+// import Api from "../Api";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,38 +14,22 @@ export default function Form_LR() {
   //   alert(JSON.stringify(data));
   // };
 
-  let navigate = useNavigate();
-  // const routeChange = () => {
-  //   let path = `/dashroute`;
-  //   navigate(path);
-  // };
-  // const handleFormSubmit = async () => {
-  //   const signupDetails = {
-  //     name: getValues().name,
-  //     email: getValues().email,
-  //     phoneNumber: getValues().phoneNumber,
-  //     password: getValues().password,
-  //     confirmPassword: getValues().confirmPassword,
-  //   };
-  //   await Api.post("/auth/signup", signupDetails).then((res) => {
-  //     console.log("res", res);
-  //   });
-  // };
+  
 
-  const onSubmite = (data) => {
-    const { password, passwordrepeat } = data;
+  // const onSubmite = (data) => {
+  //   const { password, passwordrepeat } = data;
 
-    // Add custom password validation logic here
-    if (password !== passwordrepeat) {
-      alert("Passwords do not match");
-    } else {
-      alert("Registration successful");
-      // You can submit the form data to your API or take other actions here
-    }
-  };
+  //   // Add custom password validation logic here
+  //   if (password !== passwordrepeat) {
+  //     alert("Passwords do not match");
+  //   } else {
+  //     alert("Registration successful");
+  //     // You can submit the form data to your API or take other actions here
+  //   }
+  // };
 
   const Login = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const {
       register,
@@ -127,6 +109,9 @@ export default function Form_LR() {
                   Password is required
                 </span>
               )}
+              <div className="ForgotPassword_Css">
+                <Link style={{color:"white",textDecoration:"none",cursor:"pointer"}} to="/ForgotPassword">ForgotPassword?</Link>
+              </div>
 
               <div
                 style={{
