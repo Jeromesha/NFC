@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../Components/nfc.css";
 import OTPInput from "otp-input-react";
-import {  Form } from "antd";
+import { Form } from "antd";
 import { Link } from "react-router-dom";
 
 function ForgotPasswordForm({
@@ -94,16 +94,20 @@ function Otp({ setComponentName }) {
           <center>
             <div
               // className="loginPage_button_backIcon"
-              style={{ marginTop: "10px",              display: "flex",
-              justifyContent: "flex-end",
- }}
+              style={{
+                marginTop: "10px",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
             >
               <Link
                 onClick={() => setComponentName("ForgotPassword")}
                 style={{
-                  fontSize: "14px",
+                  fontSize: "16px",
                   display: "flex",
                   textAlign: "center",
+                  color:"white",
+                  textDecoration:"none"
                 }}
               >
                 <span style={{ fontSize: "14px" }}>

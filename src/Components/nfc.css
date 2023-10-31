@@ -127,7 +127,9 @@ main {
   color: #fff;
   margin-top: 10px;
 }
-
+.otp_input {
+  text-align: center;
+}
 .NfcLogin{
   padding: 0px;
 }
