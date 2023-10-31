@@ -78,7 +78,7 @@ export async function login(req, res) {
 
 const users = new Map();
 
-
+console.log
 function generateOTP() {
   return Math.floor(1000 + Math.random() * 9000).toString();
 }
@@ -118,7 +118,7 @@ export async function  sendOTPByEmail(email, otp) {
 export async function otp (req, res) {
   const { email } = req.body;
 
-  const user = users.get(email);
+  const user = await User.findOne({ email })
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
@@ -133,7 +133,7 @@ export async function otp (req, res) {
 
 export async function verifyotp(req, res)  {
   const { email, otp } = req.body;
-  const user = users.get(email);
+  const user = await User.findOne({ email })
 
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
@@ -148,7 +148,7 @@ export async function verifyotp(req, res)  {
 
 export async function updatepassword (req, res) {
   const { email, otp, newPassword } = req.body;
-  const user = users.get(email);
+  const user =await User.findOne({ email })
 
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
