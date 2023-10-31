@@ -108,6 +108,9 @@ export async function otp(req, res, next) {
             },
             { new: true }
           );
+          if (updateCode) {
+            console.log("Updated User:", updateCode);
+          }
           res.status(200).json({
             message: "code send successfully",
             id: checkEmail._id,
@@ -132,7 +135,9 @@ export async function verifyotp(req, res, next) {
     const code = JSON.parse(data.code);
     const checkEmail = await User.findOne({ email: data.email });
     if (checkEmail) {
+      console.log(checkEmail,"checkEmail");
       const matchVerificationCode = checkEmail.forgetPasswordCode === code;
+      console.log(matchVerificationCode,"matchVerificationCode");
       if (matchVerificationCode) {
         res.status(200).json({
           message: "verification code matched",
@@ -160,7 +165,7 @@ export async function updatepassword(req, res, next) {
   const id = req.params.id;
   if (id) {
     await User.findByIdAndUpdate(id, {
-      password: bcrypt.hashSync(passwordDetails.userDetails.password, salt),
+      password: bcrypt.hashSync(passwordDetails.password, salt),
     });
     res.status(201).json({
       message: "password changed successfully",
