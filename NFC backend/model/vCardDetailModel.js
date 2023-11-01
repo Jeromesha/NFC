@@ -8,6 +8,8 @@ const VCardDetail = new Schema({
     vCardName: String,
     occupation: String,
     description: String,
+    profilephoto: String,
+    coverphoto: String,
     // },
     // vCardDetails: {
     firstName: String,

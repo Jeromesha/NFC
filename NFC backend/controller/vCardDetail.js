@@ -11,6 +11,8 @@ export async function createVCardDetail(req, res, next) {
             vCardName: data.vCardName,
             occupation: data.occupation,
             description: data.description,
+            profilephoto: data.vCardForm.profilephoto,
+            coverphoto: data.vCardForm.coverphoto,
             // },
             // vCardDetails: {
             firstName: data.firstName,
