@@ -3,6 +3,8 @@ import NfcHome from "./Components/NfcHome";
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import RouteNfc from "../src/RouteNfc";
+import Layout from "../src/Components/Layout/Index";
+import DashRoutes from "./Components/Dash/DashRoutes";
 // import Form_LR from "./Components/Form_LR";
 // import SideBar from "./Components/Dash/SideBar";
 // import DashRoutes from "./Components/Dash/DashRoutes";
@@ -13,13 +15,13 @@ import RouteNfc from "../src/RouteNfc";
 function App() {
   return (
     <Suspense fallback={<h1>Loading</h1>}>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<NfcHome />} />
         {RouteNfc.map(({ path, element: Ele }, index) => (
           <Route key={index} path={path} element={Ele} />
         ))}
-      </Routes>
-            {/* <SideBar>
+      </Routes> */}
+      {/* <SideBar>
             <Routes>
               <Route path="/dash" element={<DashBoard />} />
               <Route path="/enquiries" element={<Enquiries />} />
@@ -33,12 +35,13 @@ function App() {
           ))}
         </Route>
       </Routes> */}
-            {/* <Routes>
+      <Routes>
         <Route path="/" element={<Layout />}>
           {DashRoutes.map(({ path, element: Ele }, index) => (
             <Route key={index} path={path} element={Ele} />
           ))}
-        </Route> */}
+        </Route>
+      </Routes>
       {/* <WebPageTemplate/> */}
       {/* <Trail1/> */}
     </Suspense>

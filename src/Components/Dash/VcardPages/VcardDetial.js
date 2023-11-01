@@ -15,16 +15,15 @@ export default function VcardDetail() {
     firstName: "",
     lastName: "",
     email: "",
+    profilephoto: "",
+    coverphoto: "",
     phone: "",
     alternateEmail: "",
     location: "",
     locationURL: "",
     dateOfBirth: "",
     company: "",
-    jobTitle: "",
     defaultLanguage: "",
-    image: null,
-    images: null,
   });
 
   const [form] = Form.useForm();
@@ -34,7 +33,7 @@ export default function VcardDetail() {
       .validateFields()
       .then((values) => {
         // Send a POST request to your API with the form data
-        Api.post('http://localhost:8080/vcard/createvcarddetail', values)
+        Api.post("http://localhost:8080/vcard/createvcarddetail", values)
           .then((response) => {
             console.log("Data sent successfully:", response);
           })
@@ -58,8 +57,9 @@ export default function VcardDetail() {
       const reader = new FileReader();
       reader.onload = (event) => {
         setSelectedImage(event.target.result);
-        setFormData({ ...formData, image: file });
+        setFormData({ ...formData, profilephoto: file });
       };
+      console.log(file);
       reader.readAsDataURL(file);
     }
   };
@@ -70,8 +70,9 @@ export default function VcardDetail() {
       const reader = new FileReader();
       reader.onload = (event) => {
         setSelectedImages(event.target.result);
-        setFormData({ ...formData, images: file });
+        setFormData({ ...formData, coverphoto: file });
       };
+      console.log(file);
       reader.readAsDataURL(file);
     }
   };
@@ -82,7 +83,7 @@ export default function VcardDetail() {
       <Form layout="vertical" form={form} onFinish={handleSubmit} initialValues={formData}>
         <div>
           <Form.Item
-          style={{margin:"0px"}}
+            style={{ margin: "0px" }}
             name="url"
             label="Url Alias"
             rules={[
@@ -91,14 +92,16 @@ export default function VcardDetail() {
                 message: "Please enter Url Alias!",
               },
             ]}
-          ><Input /></Form.Item>
+          >
+            <Input />
+          </Form.Item>
         </div>
 
         <Row gutter={16}>
           <Col xs={24} sm={12} md={6} lg={6}>
             <div>
               <Form.Item
-              style={{margin:"0px"}}
+                style={{ margin: "0px" }}
                 name="vCardName"
                 label="VCard Name"
                 rules={[
@@ -107,12 +110,13 @@ export default function VcardDetail() {
                     message: "Please enter VCard Name!",
                   },
                 ]}
-              ><Input /></Form.Item>
-              
+              >
+                <Input />
+              </Form.Item>
             </div>
             <div>
               <Form.Item
-              style={{margin:"0px"}}
+                style={{ margin: "0px" }}
                 name="occupation"
                 label="Occupation"
                 rules={[
@@ -121,12 +125,13 @@ export default function VcardDetail() {
                     message: "Please enter Occupation!",
                   },
                 ]}
-              ><Input /></Form.Item>
-              
+              >
+                <Input />
+              </Form.Item>
             </div>
             <div>
               <Form.Item
-              style={{margin:"0px"}}
+                style={{ margin: "0px" }}
                 name="description"
                 label="Description"
                 rules={[
@@ -137,33 +142,35 @@ export default function VcardDetail() {
                 ]}
               >
                 <Input.TextArea />
-              </Form.Item> 
+              </Form.Item>
             </div>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
-            <div style={{paddingTop:"5%"}}>
-              <Form.Item name="image" label="Profile">
-                <Input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-                {selectedImage && (
-                  <div>
-                    <p>Preview</p>
+            <div style={{ paddingTop: "5%" }}>
+              <div>
+                <Form.Item name="profilephoto" label="Profile Photo">
+                  <Input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                  />
+                  {selectedImage && (
                     <div>
-                      <img
-                        src={selectedImage}
-                        alt="Selected"
-                        style={{ maxWidth: "20%", maxHeight: "20%" }}
-                      />
+                      <p>Preview</p>
+                      <div>
+                        <img
+                          src={selectedImage}
+                          alt="Selected"
+                          style={{ maxWidth: "20%", maxHeight: "20%" }}
+                        />
+                      </div>
                     </div>
-                  </div>
-                )}
-              </Form.Item>
+                  )}
+                </Form.Item>
+              </div>
             </div>
-            <div style={{paddingTop:"5%"}}>
-              <Form.Item name="images" label="Cover">
+            <div style={{ paddingTop: "5%" }}>
+              <Form.Item name="coverphoto" label="Cover Photo">
                 <Input
                   type="file"
                   accept="image/*"
@@ -185,7 +192,7 @@ export default function VcardDetail() {
             </div>
           </Col>
         </Row>
-        <h5 style={{paddingTop:"3%", paddingBottom:"3%"}}>VCard Details</h5>
+        <h5 style={{ paddingTop: "3%", paddingBottom: "3%" }}>VCard Details</h5>
         <Row gutter={16}>
           <Col xs={24} sm={12} md={6} lg={6}>
             <div>
@@ -198,8 +205,9 @@ export default function VcardDetail() {
                     message: "Please enter First Name!",
                   },
                 ]}
-              ><Input /></Form.Item>
-              
+              >
+                <Input />
+              </Form.Item>
             </div>
             <div>
               <Form.Item
@@ -211,7 +219,9 @@ export default function VcardDetail() {
                     message: "Please enter Last Name!",
                   },
                 ]}
-              ><Input /></Form.Item>{" "}
+              >
+                <Input />
+              </Form.Item>
             </div>
             <div>
               <Form.Item
@@ -224,47 +234,59 @@ export default function VcardDetail() {
                     message: "Please enter a valid Email!",
                   },
                 ]}
-              ><Input /></Form.Item>
+              >
+                <Input />
+              </Form.Item>
             </div>
             <div>
-              <Form.Item name="phone" label="Phone"><Input /></Form.Item>
+              <Form.Item name="phone" label="Phone">
+                <Input />
+              </Form.Item>
             </div>
             <div>
-              <Form.Item
-                name="alternateEmail"
-                label="Alternate Email"
-              > <Input /></Form.Item>
+              <Form.Item name="alternateEmail" label="Alternate Email">
+                <Input />
+              </Form.Item>
             </div>
           </Col>
           <Col xs={24} sm={12} md={6} lg={6}>
             <div>
-              <Form.Item name="location" label="Location"><Input /></Form.Item>
+              <Form.Item name="location" label="Location">
+                <Input />
+              </Form.Item>
             </div>
             <div>
-              <Form.Item name="locationURL" label="Location URL"><Input /></Form.Item>
+              <Form.Item name="locationURL" label="Location URL">
+                <Input />
+              </Form.Item>
             </div>
             <div>
-              <Form.Item name="dateOfBirth" label="Date of Birth"><Input /></Form.Item>
+              <Form.Item name="dateOfBirth" label="Date of Birth">
+                <Input />
+              </Form.Item>
             </div>
             <div>
-              <Form.Item name="company" label="Company"><Input /></Form.Item>
+              <Form.Item name="company" label="Company">
+                <Input />
+              </Form.Item>
             </div>
             <div>
-              <Form.Item
-                name="defaultLanguage"
-                label="Default Language"
-              > <Input /></Form.Item>
+              <Form.Item name="defaultLanguage" label="Default Language">
+                <Input />
+              </Form.Item>
             </div>
           </Col>
         </Row>
-        <Row style={{ paddingTop:"5%", display:"flex", justifyContent:"end"}}>
+        <Row
+          style={{ paddingTop: "5%", display: "flex", justifyContent: "end" }}
+        >
           <Col sm={6} lg={2}>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
           </Col>
           <Col sm={6} lg={2}>
-          <Button type="default">Discard</Button>
+            <Button type="default">Discard</Button>
           </Col>
         </Row>
       </Form>

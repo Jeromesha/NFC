@@ -63,7 +63,7 @@ export default function QrCode() {
                                 <ChromePicker color={back} onChange={handleBackgroundColorChange} />
                             )}
                         </div>
-                        <br/>
+                        <br />
                         <Input
                             value={back}
                             onChange={(e) => setBack(e.target.value)}
