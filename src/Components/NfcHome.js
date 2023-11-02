@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import React from "react";
 import NfcLogo from "../Assert/nfcLogo-removebg-preview.png";
-import "../Components/nfc.css";
+import "../Components/HomeNForm.css";
 import { Row, Col, Card, NavLink } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import {

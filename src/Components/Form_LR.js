@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Components/nfc.css";
+import "../Components/HomeNForm.css";
 import { Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";

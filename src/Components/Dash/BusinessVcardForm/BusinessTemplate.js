@@ -72,7 +72,7 @@ export default function BusinessTemplate() {
 
       const navigate = useNavigate();
       const handleNavigate =() => {
-        navigate("/businessform")
+        navigate("/user/businessform")
       }
     return (
       <div>

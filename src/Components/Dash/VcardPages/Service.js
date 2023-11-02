@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Modal, Table, Form, Input, Upload, message, Space } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Row } from "react-bootstrap";
+import Api from "../../../Api";
 
 const { TextArea } = Input;
 
@@ -14,18 +15,18 @@ export default function Service() {
     setIsModalOpen(true);
   };
 
-  const handleOk = () => {
-    form
-      .validateFields()
-      .then((values) => {
-        // Handle your form submission here
-        console.log(values);
-        setIsModalOpen(false);
-      })
-      .catch((errorInfo) => {
-        console.log("Validation failed:", errorInfo);
-      });
-  };
+  // const handleOk = () => {
+  //   form
+  //     .validateFields()
+  //     .then((values) => {
+  //       // Handle your form submission here
+  //       console.log(values);
+  //       setIsModalOpen(false);
+  //     })
+  //     .catch((errorInfo) => {
+  //       console.log("Validation failed:", errorInfo);
+  //     });
+  // };
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -65,6 +66,23 @@ export default function Service() {
     },
   ];
 
+  const handleSubmit = () => {
+    form
+      .validateFields()
+      .then((values) => {
+        // Send a POST request to your API with the form data
+        Api.post("http://localhost:8080/vcard/createvcarddetail", values)
+          .then((response) => {
+            console.log("Data sent successfully:", response);
+          })
+          .catch((error) => {
+            console.error("Error sending data:", error);
+          });
+      })
+      .catch((errorInfo) => {
+        console.log("Validation failed:", errorInfo);
+      });
+  };
   const data = [
     {
       key: "1",
@@ -98,13 +116,14 @@ export default function Service() {
       <Modal
         title="Service Detail"
         visible={isModalOpen}
-        onOk={handleOk}
+        // onOk={handleOk}
+        onClick={handleSubmit}
         onCancel={handleCancel}
         footer={[
           <Button key="discard" onClick={handleCancel}>
             Discard
           </Button>,
-          <Button key="submit" type="primary" onClick={handleOk}>
+          <Button key="submit" type="primary" onClick={onclick}>
             Submit
           </Button>,
         ]}
@@ -113,8 +132,9 @@ export default function Service() {
           form={form}
           name="serviceForm"
           initialValues={{ remember: true }}
-          onFinish={handleOk}
+          // onFinish={handleOk}
           onFinishFailed={onFinishFailed}
+          onClick={handleSubmit}
         >
           <div>
           <Form.Item

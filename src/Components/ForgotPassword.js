@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../Components/nfc.css";
+import "../Components/HomeNForm.css";
 import OTPInput from "otp-input-react";
 import { Form } from "antd";
 import { Link } from "react-router-dom";
